@@ -1,22 +1,25 @@
 <?php
 /**
- * Task entity.
+ * Category entity.
  */
 
 namespace App\Entity;
 
-use App\Repository\TaskRepository;
+use App\Repository\CategoryRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * Class Task.
+ * Class Category.
  *
  * @psalm-suppress MissingConstructor
  */
-#[ORM\Entity(repositoryClass: TaskRepository::class)]
-#[ORM\Table(name: 'tasks')]
-class Task
+#[ORM\Entity(repositoryClass: CategoryRepository::class)]
+#[ORM\Table(name: 'categories')]
+#[ORM\UniqueConstraint(name: 'uq_categories_title', columns: ['title'])]
+#[UniqueEntity(fields: ['title'])]
+class Category
 {
     /**
      * Primary key.
@@ -32,8 +35,6 @@ class Task
      * Created at.
      *
      * @var DateTimeImmutable|null
-     *
-     * @psalm-suppress PropertyNotSetInConstructor
      */
     #[ORM\Column(type: 'datetime_immutable')]
     private ?DateTimeImmutable $createdAt;
@@ -42,8 +43,6 @@ class Task
      * Updated at.
      *
      * @var DateTimeImmutable|null
-     *
-     * @psalm-suppress PropertyNotSetInConstructor
      */
     #[ORM\Column(type: 'datetime_immutable')]
     private ?DateTimeImmutable $updatedAt;
@@ -54,7 +53,15 @@ class Task
      * @var string|null
      */
     #[ORM\Column(type: 'string', length: 255)]
-    private ?string $title = null;
+    private ?string $title;
+
+    /**
+     * Slug.
+     *
+     * @var string|null
+     */
+    #[ORM\Column(type: 'string', length: 64)]
+    private ?string $slug;
 
     /**
      * Getter for Id.
