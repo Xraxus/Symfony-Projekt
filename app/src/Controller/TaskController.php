@@ -21,12 +21,12 @@ class TaskController extends AbstractController
     /**
      * Task service.
      */
-    private TaskService $taskService;
+    private TaskServiceInterface $taskService;
 
     /**
      * Constructor.
      */
-    public function __construct(TaskService $taskService)
+    public function __construct(TaskServiceInterface $taskService)
     {
         $this->taskService = $taskService;
     }
