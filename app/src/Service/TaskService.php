@@ -51,4 +51,5 @@ class TaskService implements TaskServiceInterface
             TaskRepository::PAGINATOR_ITEMS_PER_PAGE
         );
     }
+
 }

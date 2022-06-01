@@ -1,16 +1,10 @@
 <?php
-/**
- * Task service interface.
- */
-
 namespace App\Service;
 
+use App\Entity\Category;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 
-/**
- * Interface TaskServiceInterface.
- */
-interface TaskServiceInterface
+interface CategoryServiceInterface
 {
     /**
      * Get paginated list.
@@ -21,5 +15,10 @@ interface TaskServiceInterface
      */
     public function getPaginatedList(int $page): PaginationInterface;
 
-
+    /**
+     * Save entity.
+     *
+     * @param Category $category Category entity
+     */
+    public function save(Category $category): void;
 }
