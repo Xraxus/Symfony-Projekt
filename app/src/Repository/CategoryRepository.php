@@ -71,7 +71,22 @@ class CategoryRepository extends ServiceEntityRepository
      */
     public function save(Category $category): void
     {
-        $this->_em->persist($category);
+        if (null == $category->getId()) {
+            $category->setCreatedAt(new \DateTimeImmutable());
+        }
+        $category->setUpdatedAt(new \DateTimeImmutable());
+
+        $this->categoryRepository->save($category);
+    }
+
+    /**
+     * Delete entity.
+     *
+     * @param Category $category Category entity
+     */
+    public function delete(Category $category): void
+    {
+        $this->_em->remove($category);
         $this->_em->flush();
     }
 }
