@@ -26,7 +26,7 @@
                 <tr>
                     <td>{{ task.id }}</td>
                     <td>{{ task.TaskContent }}</td>
-                    <td>{{ task.TaskCreateTime|date('Y-m-d') }}</td>
+                    <td>{{ task.TaskCreateTime|format_date('long') }}</td>
                     <td>
                         <a href="{{ url('task_show', {id: task.id}) }}" title="{{ 'action.view'|trans }}">
                             {{ 'action.view'|trans }}

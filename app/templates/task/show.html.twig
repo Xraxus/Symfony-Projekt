@@ -13,7 +13,7 @@
             <dt>{{ 'label.content'|trans }}</dt>
             <dd>{{  task.TaskContent }}</dd>
             <dt>{{ 'label.CreateTime'|trans }}</dt>
-            <dd>{{   task.TaskCreateTime|date('Y-m-d')  }}</dd>
+            <dd>{{   task.TaskCreateTime|format_date('long')  }}</dd>
         </dl>
         <p>
             <a href="{{ url('task_index') }}" title="{{ 'action.back_to_list'|trans }}">
