@@ -14,6 +14,8 @@
             <dd>{{  note.NoteTitle }}</dd>
             <dt>{{ 'label.content'|trans }}</dt>
             <dd>{{  note.NoteContent }}</dd>
+            <dt>{{ 'label.CreateTime'|trans }}</dt>
+            <dd>{{   note.CreateTime|date('Y-m-d')  }}</dd>
         </dl>
         <p>
             <a href="{{ url('note_index') }}" title="{{ 'action.back_to_list'|trans }}">

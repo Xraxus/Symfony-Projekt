@@ -1,7 +1,5 @@
 <?php
-/**
- * Note repository.
- */
+
 namespace App\Entity;
 
 use App\Repository\NoteRepository;

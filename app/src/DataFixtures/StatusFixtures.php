@@ -12,6 +12,7 @@ class StatusFixtures extends AbstractBaseFixtures
 {
     /**
      * Load data.
+     * @return void
      */
     public function loadData(): void
     {
