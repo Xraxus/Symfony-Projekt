@@ -6,21 +6,17 @@
 namespace App\Entity;
 
 use App\Repository\CategoryRepository;
-use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * Class Category.
- *
- * @psalm-suppress MissingConstructor
+ * Category class.
  */
+
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 #[ORM\Table(name: 'categories')]
-#[ORM\UniqueConstraint(name: 'uq_categories_title', columns: ['title'])]
-#[UniqueEntity(fields: ['title'])]
 class Category
 {
+
     /**
      * Primary key.
      *
@@ -29,39 +25,15 @@ class Category
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private ?int $id = null;
+    private $id;
 
     /**
-     * Created at.
-     *
-     * @var DateTimeImmutable|null
-     */
-    #[ORM\Column(type: 'datetime_immutable')]
-    private ?DateTimeImmutable $createdAt;
-
-    /**
-     * Updated at.
-     *
-     * @var DateTimeImmutable|null
-     */
-    #[ORM\Column(type: 'datetime_immutable')]
-    private ?DateTimeImmutable $updatedAt;
-
-    /**
-     * Title.
+     * Category name.
      *
      * @var string|null
      */
     #[ORM\Column(type: 'string', length: 255)]
-    private ?string $title;
-
-    /**
-     * Slug.
-     *
-     * @var string|null
-     */
-    #[ORM\Column(type: 'string', length: 64)]
-    private ?string $slug;
+    private $category_name;
 
     /**
      * Getter for Id.
@@ -74,62 +46,25 @@ class Category
     }
 
     /**
-     * Getter for created at.
+     * Getter for category name.
      *
-     * @return DateTimeImmutable|null Created at
+     * @return string|null Category name
      */
-    public function getCreatedAt(): ?DateTimeImmutable
+    public function getCategoryName(): ?string
     {
-        return $this->createdAt;
+        return $this->category_name;
     }
 
     /**
      * Setter for created at.
      *
-     * @param DateTimeImmutable|null $createdAt Created at
+     * @param string $category_name Category name
+     * @return Category
      */
-    public function setCreatedAt(?DateTimeImmutable $createdAt): void
+    public function setCategoryName(string $category_name): self
     {
-        $this->createdAt = $createdAt;
-    }
+        $this->category_name = $category_name;
 
-    /**
-     * Getter for updated at.
-     *
-     * @return DateTimeImmutable|null Updated at
-     */
-    public function getUpdatedAt(): ?DateTimeImmutable
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * Setter for updated at.
-     *
-     * @param DateTimeImmutable|null $updatedAt Updated at
-     */
-    public function setUpdatedAt(?DateTimeImmutable $updatedAt): void
-    {
-        $this->updatedAt = $updatedAt;
-    }
-
-    /**
-     * Getter for title.
-     *
-     * @return string|null Title
-     */
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    /**
-     * Setter for title.
-     *
-     * @param string|null $title Title
-     */
-    public function setTitle(?string $title): void
-    {
-        $this->title = $title;
+        return $this;
     }
 }
