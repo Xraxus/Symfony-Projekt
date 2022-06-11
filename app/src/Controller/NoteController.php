@@ -1,12 +1,12 @@
 <?php
 /**
- * Category controller.
+ * Note controller.
  */
 
 namespace App\Controller;
 
-use App\Entity\Category;
-use App\Repository\CategoryRepository;
+use App\Entity\Note;
+use App\Repository\NoteRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,50 +14,50 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class CategoryController.
+ * Class NoteController.
  */
-#[Route('/category')]
-class CategoryController extends AbstractController
+#[Route('/note')]
+class NoteController extends AbstractController
 {
     /**
      * Index action.
      *
      * @param Request            $request        HTTP Request
-     * @param CategoryRepository     $categoryRepository Category repository
+     * @param NoteRepository     $noteRepository Note repository
      * @param PaginatorInterface $paginator      Paginator
      *
      * @return Response HTTP response
      */
-    #[Route(name: 'category_index', methods: 'GET')]
-    public function index(Request $request, CategoryRepository $categoryRepository, PaginatorInterface $paginator): Response
+    #[Route(name: 'note_index', methods: 'GET')]
+    public function index(Request $request, NoteRepository $noteRepository, PaginatorInterface $paginator): Response
     {
         $pagination = $paginator->paginate(
-            $categoryRepository->queryAll(),
+            $noteRepository->queryAll(),
             $request->query->getInt('page', 1),
-            CategoryRepository::PAGINATOR_ITEMS_PER_PAGE
+            NoteRepository::PAGINATOR_ITEMS_PER_PAGE
         );
 
-        return $this->render('category/index.html.twig', ['pagination' => $pagination]);
+        return $this->render('note/index.html.twig', ['pagination' => $pagination]);
     }
 
     /**
      * Show action.
      *
-     * @param Category $category Category entity
+     * @param Note $note Note entity
      *
      * @return Response HTTP response
      */
     #[Route(
         '/{id}',
-        name: 'category_show',
+        name: 'note_show',
         requirements: ['id' => '[1-9]\d*'],
         methods: 'GET',
     )]
-    public function show(Category $category): Response
+    public function show(Note $note): Response
     {
         return $this->render(
-            'category/show.html.twig',
-            ['category' => $category]
+            'note/show.html.twig',
+            ['note' => $note]
         );
     }
 }

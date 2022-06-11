@@ -1,20 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.category_details'|trans({'%id%': category.id|default('')}) }}
+    {{ 'title.task_details'|trans({'%id%': status.id|default('')}) }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.category_details'|trans({'%id%': category.id|default('')}) }}</h1>
-    {% if category is defined and category|length %}
+    <h1>{{ 'title.status_details'|trans({'%id%': status.id|default('')}) }}</h1>
+    {% if status is defined and status|length %}
         <dl class="dl-horizontal">
             <dt>{{ 'label.id'|trans }}</dt>
-            <dd>{{ category.id }}</dd>
+            <dd>{{ status.id }}</dd>
             <dt>{{ 'label.name'|trans }}</dt>
-            <dd>{{  category.CategoryName }}</dd>
+            <dd>{{  status.StatusName }}</dd>
         </dl>
         <p>
-            <a href="{{ url('category_index') }}" title="{{ 'action.back_to_list'|trans }}">
+            <a href="{{ url('status_index') }}" title="{{ 'action.back_to_list'|trans }}">
                 {{ 'action.back_to_list'|trans }}
             </a>
         </p>

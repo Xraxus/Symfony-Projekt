@@ -2,20 +2,20 @@
 
 namespace App\Repository;
 
-use App\Entity\Category;
+use App\Entity\Status;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Category>
+ * @extends ServiceEntityRepository<Status>
  *
- * @method Category|null find($id, $lockMode = null, $lockVersion = null)
- * @method Category|null findOneBy(array $criteria, array $orderBy = null)
- * @method Category[]    findAll()
- * @method Category[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Status|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Status|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Status[]    findAll()
+ * @method Status[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CategoryRepository extends ServiceEntityRepository
+class StatusRepository extends ServiceEntityRepository
 {
     /**
      * Items per page.
@@ -26,7 +26,7 @@ class CategoryRepository extends ServiceEntityRepository
      *
      * @constant int
      */
-    public const PAGINATOR_ITEMS_PER_PAGE = 3;
+    public const PAGINATOR_ITEMS_PER_PAGE = 10;
 
     /**
      * Constructor.
@@ -35,7 +35,7 @@ class CategoryRepository extends ServiceEntityRepository
      */
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Category::class);
+        parent::__construct($registry, Status::class);
     }
 
     /**
@@ -46,7 +46,7 @@ class CategoryRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
-            ->orderBy('category.id', 'DESC');
+            ->orderBy('status.id', 'ASC');
     }
 
     /**
@@ -58,7 +58,7 @@ class CategoryRepository extends ServiceEntityRepository
      */
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
-        return $queryBuilder ?? $this->createQueryBuilder('category');
+        return $queryBuilder ?? $this->createQueryBuilder('status');
     }
     /*    public function add(Category $entity, bool $flush = false): void
         {

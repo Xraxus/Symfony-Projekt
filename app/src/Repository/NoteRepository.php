@@ -2,20 +2,20 @@
 
 namespace App\Repository;
 
-use App\Entity\Category;
+use App\Entity\Note;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Category>
+ * @extends ServiceEntityRepository<Note>
  *
- * @method Category|null find($id, $lockMode = null, $lockVersion = null)
- * @method Category|null findOneBy(array $criteria, array $orderBy = null)
- * @method Category[]    findAll()
- * @method Category[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Note|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Note|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Note[]    findAll()
+ * @method Note[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CategoryRepository extends ServiceEntityRepository
+class NoteRepository extends ServiceEntityRepository
 {
     /**
      * Items per page.
@@ -26,7 +26,7 @@ class CategoryRepository extends ServiceEntityRepository
      *
      * @constant int
      */
-    public const PAGINATOR_ITEMS_PER_PAGE = 3;
+    const PAGINATOR_ITEMS_PER_PAGE = 10;
 
     /**
      * Constructor.
@@ -35,7 +35,7 @@ class CategoryRepository extends ServiceEntityRepository
      */
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Category::class);
+        parent::__construct($registry, Note::class);
     }
 
     /**
@@ -46,7 +46,7 @@ class CategoryRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
-            ->orderBy('category.id', 'DESC');
+            ->orderBy('note.note_create_time', 'DESC');
     }
 
     /**
@@ -58,9 +58,11 @@ class CategoryRepository extends ServiceEntityRepository
      */
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
-        return $queryBuilder ?? $this->createQueryBuilder('category');
+        return $queryBuilder ?? $this->createQueryBuilder('note');
     }
-    /*    public function add(Category $entity, bool $flush = false): void
+
+    /*
+        public function add(Note $entity, bool $flush = false): void
         {
             $this->getEntityManager()->persist($entity);
 
@@ -69,7 +71,7 @@ class CategoryRepository extends ServiceEntityRepository
             }
         }
 
-        public function remove(Category $entity, bool $flush = false): void
+        public function remove(Note $entity, bool $flush = false): void
         {
             $this->getEntityManager()->remove($entity);
 
@@ -79,24 +81,24 @@ class CategoryRepository extends ServiceEntityRepository
         }*/
 
 //    /**
-//     * @return Category[] Returns an array of Category objects
+//     * @return Note[] Returns an array of Note objects
 //     */
 //    public function findByExampleField($value): array
 //    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
+//        return $this->createQueryBuilder('n')
+//            ->andWhere('n.exampleField = :val')
 //            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
+//            ->orderBy('n.id', 'ASC')
 //            ->setMaxResults(10)
 //            ->getQuery()
 //            ->getResult()
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Category
+//    public function findOneBySomeField($value): ?Note
 //    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
+//        return $this->createQueryBuilder('n')
+//            ->andWhere('n.exampleField = :val')
 //            ->setParameter('val', $value)
 //            ->getQuery()
 //            ->getOneOrNullResult()
