@@ -19,7 +19,7 @@
                 <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'note.note_title') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.content'|trans, 'note.note_content') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.create_time'|trans, 'note.note_create_time') }}</th>
-                <th>{{ 'label.category'|trans }}</th>
+                <th>{{ knp_pagination_sortable(pagination,'label.category'|trans, 'category.category_name') }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>

@@ -51,7 +51,14 @@ class Note
     #[ORM\Column(type: 'datetime_immutable')]
     private ?DateTimeImmutable $note_create_time;
 
-    #[ORM\ManyToOne(targetEntity: Category::class)]
+    /**
+     * Category.
+     *
+     * @var Category|null
+    */
+    #[ORM\ManyToOne(
+        targetEntity: "App\Entity\Category",
+    )]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 

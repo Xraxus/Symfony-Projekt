@@ -16,6 +16,9 @@ class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInter
      */
     public function loadData(): void
     {
+        if (null === $this->manager || null === $this->faker) {
+            return;
+        }
 
         $this->createMany(50, 'notes', function (int $i) {
             $note = new Note();
