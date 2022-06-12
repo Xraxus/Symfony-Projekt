@@ -2,9 +2,11 @@
 /**
  * Category fixtures
  */
+
 namespace App\DataFixtures;
 
 use App\Entity\Category;
+
 /**
  * Class CategoryFixtures.
  */
@@ -15,17 +17,13 @@ class CategoryFixtures extends AbstractBaseFixtures
      */
     public function loadData(): void
     {
-
-        for ($i = 0; $i < 10; ++$i) {
+        $this->createMany(20, 'categories', function (int $i) {
             $category = new Category();
             $category->setCategoryName($this->faker->unique()->word);
 
-            $this->manager->persist($category);
-        }
-
+            return $category;
+        });
 
         $this->manager->flush();
     }
-
-
 }

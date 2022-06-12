@@ -19,6 +19,7 @@
                 <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'note.note_title') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.content'|trans, 'note.note_content') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.create_time'|trans, 'note.note_create_time') }}</th>
+                <th>{{ 'label.category'|trans }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
@@ -29,6 +30,7 @@
                     <td>{{ note.NoteTitle }}</td>
                     <td>{{ note.NoteContent }}</td>
                     <td>{{ note.CreateTime|format_date('long') }}</td>
+                    <td>{{ note.category.CategoryName }}</td>
                     <td>
                         <a href="{{ url('note_show', {id: note.id}) }}" title="{{ 'action.view'|trans }}">
                             {{ 'action.view'|trans }}

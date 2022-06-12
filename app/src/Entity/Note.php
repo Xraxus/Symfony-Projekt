@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Note entity.
+ */
 namespace App\Entity;
 
 use App\Repository\NoteRepository;
@@ -47,6 +50,10 @@ class Note
      */
     #[ORM\Column(type: 'datetime_immutable')]
     private ?DateTimeImmutable $note_create_time;
+
+    #[ORM\ManyToOne(targetEntity: Category::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $category = null;
 
     /**
      * Getter for Id.
@@ -123,4 +130,24 @@ class Note
         $this->note_create_time = $note_create_time;
     }
 
+    /**
+     * Getter for note's category
+     * @return Category|null
+     */
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    /**
+     * Setter for note's category
+     * @param Category|null $category
+     * @return $this
+     */
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
 }
