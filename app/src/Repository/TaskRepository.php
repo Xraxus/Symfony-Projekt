@@ -46,6 +46,8 @@ class TaskRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
+            ->select('task', 'status')
+            ->join("task.status", "status")
             ->orderBy('task.task_create_time', 'DESC');
     }
 

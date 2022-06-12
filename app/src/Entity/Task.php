@@ -21,7 +21,7 @@ class Task
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private ?int $id;
 
     /**
      * Task content.
@@ -29,7 +29,7 @@ class Task
      * @var string|null
      */
     #[ORM\Column(type: 'string', length: 255)]
-    private $task_content;
+    private ?string $task_content;
 
     /**
      * Created at.
@@ -38,6 +38,14 @@ class Task
      */
     #[ORM\Column(type: 'datetime_immutable')]
     private ?DateTimeImmutable $task_create_time;
+
+    /**
+     * Status.
+     * @var Status|null
+     */
+    #[ORM\ManyToOne(targetEntity: Status::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Status $status = null;
 
     /**
      * Getter for Id.
@@ -86,6 +94,18 @@ class Task
     {
         $this->task_create_time = $task_create_time;
 
+    }
+
+    public function getStatus(): ?Status
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?Status $status): self
+    {
+        $this->status = $status;
+
+        return $this;
     }
 
 }

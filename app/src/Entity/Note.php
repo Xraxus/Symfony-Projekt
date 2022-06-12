@@ -25,7 +25,7 @@ class Note
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private ?int $id;
 
     /**
      * Category title.
@@ -33,7 +33,7 @@ class Note
      * @var string|null
      */
     #[ORM\Column(type: 'string', length: 255)]
-    private $note_title;
+    private ?string $note_title;
 
     /**
      * Category content.
@@ -41,7 +41,7 @@ class Note
      * @var string|null
      */
     #[ORM\Column(type: 'string', length: 255)]
-    private $note_content;
+    private ?string $note_content;
 
     /**
      * Created at.
@@ -55,7 +55,7 @@ class Note
      * Category.
      *
      * @var Category|null
-    */
+     */
     #[ORM\ManyToOne(
         targetEntity: "App\Entity\Category",
     )]

@@ -12,6 +12,8 @@
             <dd>{{ task.id }}</dd>
             <dt>{{ 'label.content'|trans }}</dt>
             <dd>{{  task.TaskContent }}</dd>
+            <dt>{{ 'label.status'|trans }}</dt>
+            <dd>{{  task.status.StatusName }}</dd>
             <dt>{{ 'label.CreateTime'|trans }}</dt>
             <dd>{{   task.TaskCreateTime|format_date('long')  }}</dd>
         </dl>

@@ -18,6 +18,8 @@
                 <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'task.id') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.content'|trans, 'task.task_content') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.create_time'|trans, 'task.task_create_time') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.status'|trans, 'status.status_name') }}</th>
+                {{ knp_pagination_sortable(pagination, 'label_category'|trans, 'category.title') }}
                 <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
@@ -27,6 +29,7 @@
                     <td>{{ task.id }}</td>
                     <td>{{ task.TaskContent }}</td>
                     <td>{{ task.TaskCreateTime|format_date('long') }}</td>
+                    <td>{{ task.status.StatusName }}</td>
                     <td>
                         <a href="{{ url('task_show', {id: task.id}) }}" title="{{ 'action.view'|trans }}">
                             {{ 'action.view'|trans }}
