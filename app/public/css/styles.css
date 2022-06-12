@@ -1,3 +1,5 @@
-p {
-    color: red;
+.flexMarginRight {
+    display: flex;
+    justify-content: space-between;
 }
+
