@@ -6,8 +6,8 @@
 namespace App\Controller;
 
 use App\Entity\Note;
-use App\Repository\NoteRepository;
-use Knp\Component\Pager\PaginatorInterface;
+use App\Service\NoteService;
+use App\Service\NoteServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,22 +19,28 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/note')]
 class NoteController extends AbstractController
 {
+
+    /**
+     * Note Service
+     */
+    private NoteServiceInterface $noteService;
+
+    public function __construct(NoteServiceInterface $noteService)
+    {
+        $this->noteService=$noteService;
+    }
+
     /**
      * Index action.
      *
-     * @param Request            $request        HTTP Request
-     * @param NoteRepository     $noteRepository Note repository
-     * @param PaginatorInterface $paginator      Paginator
-     *
+     * @param Request $request HTTP Request
      * @return Response HTTP response
      */
     #[Route(name: 'note_index', methods: 'GET')]
-    public function index(Request $request, NoteRepository $noteRepository, PaginatorInterface $paginator): Response
+    public function index(Request $request): Response
     {
-        $pagination = $paginator->paginate(
-            $noteRepository->queryAll(),
+        $pagination = $this->noteService->getPaginatedList(
             $request->query->getInt('page', 1),
-            NoteRepository::PAGINATOR_ITEMS_PER_PAGE
         );
 
         return $this->render('note/index.html.twig', ['pagination' => $pagination]);

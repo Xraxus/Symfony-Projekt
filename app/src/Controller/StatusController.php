@@ -6,8 +6,8 @@
 namespace App\Controller;
 
 use App\Entity\Status;
-use App\Repository\StatusRepository;
-use Knp\Component\Pager\PaginatorInterface;
+use App\Service\StatusService;
+use App\Service\StatusServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,22 +19,35 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/status')]
 class StatusController extends AbstractController
 {
+
+    /**
+     * Status service.
+     *
+     * @var StatusService
+     */
+    private StatusServiceInterface $statusService;
+
+    /**
+     * Constructor.
+     *
+     * @param StatusService $statusService
+     */
+    public function __construct(StatusServiceInterface $statusService)
+    {
+        $this->statusService=$statusService;
+    }
+
     /**
      * Index action.
      *
-     * @param Request            $request        HTTP Request
-     * @param StatusRepository     $statusRepository Status repository
-     * @param PaginatorInterface $paginator      Paginator
-     *
+     * @param Request $request HTTP Request
      * @return Response HTTP response
      */
     #[Route(name: 'status_index', methods: 'GET')]
-    public function index(Request $request, StatusRepository $statusRepository, PaginatorInterface $paginator): Response
+    public function index(Request $request): Response
     {
-        $pagination = $paginator->paginate(
-            $statusRepository->queryAll(),
+        $pagination = $this->statusService->getPaginatedList(
             $request->query->getInt('page', 1),
-            StatusRepository::PAGINATOR_ITEMS_PER_PAGE
         );
 
         return $this->render('status/index.html.twig', ['pagination' => $pagination]);
@@ -47,7 +60,7 @@ class StatusController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route(
+/*    #[Route(
         '/{id}',
         name: 'status_show',
         requirements: ['id' => '[1-9]\d*'],
@@ -59,5 +72,5 @@ class StatusController extends AbstractController
             'status/show.html.twig',
             ['status' => $status]
         );
-    }
+    }*/
 }
