@@ -6,7 +6,6 @@
 namespace App\Controller;
 
 use App\Entity\Category;
-use App\Service\CategoryService;
 use App\Service\CategoryServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,9 +21,9 @@ class CategoryController extends AbstractController
     /**
      * Category Service
      *
-     * @var CategoryService
+     * @var CategoryServiceInterface
      */
-    private CategoryService $categoryService;
+    private CategoryServiceInterface $categoryService;
 
     /**
      * Constructor

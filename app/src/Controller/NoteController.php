@@ -6,7 +6,6 @@
 namespace App\Controller;
 
 use App\Entity\Note;
-use App\Service\NoteService;
 use App\Service\NoteServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

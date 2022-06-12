@@ -6,7 +6,6 @@
 namespace App\Controller;
 
 use App\Entity\Status;
-use App\Service\StatusService;
 use App\Service\StatusServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,14 +22,14 @@ class StatusController extends AbstractController
     /**
      * Status service.
      *
-     * @var StatusService
+     * @var StatusServiceInterface
      */
     private StatusServiceInterface $statusService;
 
     /**
      * Constructor.
      *
-     * @param StatusService $statusService
+     * @param StatusServiceInterface $statusService
      */
     public function __construct(StatusServiceInterface $statusService)
     {
