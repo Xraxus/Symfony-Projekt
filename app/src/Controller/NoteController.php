@@ -6,7 +6,7 @@
 namespace App\Controller;
 
 use App\Entity\Note;
-use App\Form\Type\NoteType;
+use App\Form\Type\TaskType;
 use App\Service\NoteServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -96,7 +96,7 @@ class NoteController extends AbstractController
     public function create(Request $request): Response
     {
         $note = new Note();
-        $form = $this->createForm(NoteType::class, $note);
+        $form = $this->createForm(TaskType::class, $note);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -127,7 +127,7 @@ class NoteController extends AbstractController
     #[Route('/{id}/edit', name: 'note_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function edit(Request $request, Note $note): Response
     {
-        $form = $this->createForm(NoteType::class, $note, [
+        $form = $this->createForm(TaskType::class, $note, [
             'method' => 'PUT',
             'action' => $this->generateUrl('note_edit', ['id' => $note->getId()]),
         ]);

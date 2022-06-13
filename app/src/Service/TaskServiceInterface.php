@@ -22,4 +22,12 @@ interface TaskServiceInterface
      */
     public function getPaginatedList(int $page): PaginationInterface;
 
+    /**
+     * Save entity.
+     *
+     * @param Task $task Task entity
+     */
+    public function save(Task $task): void;
+
+    public function delete(Task $task): void;
 }
