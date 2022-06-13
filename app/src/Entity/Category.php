@@ -7,6 +7,8 @@ namespace App\Entity;
 
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Category class.
@@ -14,6 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 #[ORM\Table(name: 'categories')]
+#[UniqueEntity(fields: ['category_name'])]
 class Category
 {
 
@@ -25,7 +28,7 @@ class Category
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private ?int $id;
 
     /**
      * Category name.
@@ -33,7 +36,10 @@ class Category
      * @var string|null
      */
     #[ORM\Column(type: 'string', length: 255)]
-    private $category_name;
+    #[Assert\Type('string')]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3, max: 64)]
+    private ?string $category_name;
 
     /**
      * Getter for Id.

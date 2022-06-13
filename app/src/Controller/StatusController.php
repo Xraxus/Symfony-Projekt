@@ -51,14 +51,7 @@ class StatusController extends AbstractController
 
         return $this->render('status/index.html.twig', ['pagination' => $pagination]);
     }
-
-    /**
-     * Show action.
-     *
-     * @param Status $status Status entity
-     *
-     * @return Response HTTP response
-     */
+    
 /*    #[Route(
         '/{id}',
         name: 'status_show',

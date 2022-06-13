@@ -8,6 +8,8 @@ namespace App\Entity;
 use App\Repository\NoteRepository;
 use Doctrine\ORM\Mapping as ORM;
 use DateTimeImmutable;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Note class.
@@ -15,6 +17,7 @@ use DateTimeImmutable;
 
 #[ORM\Entity(repositoryClass: NoteRepository::class)]
 #[ORM\Table(name: 'notes')]
+#[UniqueEntity(fields: ['note_title'])]
 class Note
 {
     /**
@@ -28,19 +31,25 @@ class Note
     private ?int $id = null;
 
     /**
-     * Category title.
+     * Note title.
      *
      * @var string|null
      */
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3, max: 64)]
     private ?string $note_title;
 
     /**
-     * Category content.
+     * Note content.
      *
      * @var string|null
      */
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3, max: 255)]
     private ?string $note_content;
 
     /**
@@ -49,6 +58,7 @@ class Note
      * @var DateTimeImmutable|null
      */
     #[ORM\Column(type: 'datetime_immutable')]
+    #[Assert\Type(DateTimeImmutable::class)]
     private ?DateTimeImmutable $note_create_time;
 
     /**
