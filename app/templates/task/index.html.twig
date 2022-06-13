@@ -5,7 +5,12 @@
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.task_list'|trans }}</h1>
+    <div class="flexMarginRight">
+        <h1>{{ 'title.task_list'|trans }}</h1>
+        <a href="{{ url('task_create') }}" title="{{ 'action.create' | trans }}" >
+            {{ 'action.create' | trans }}
+        </a>
+    </div>
     {% if pagination is defined and pagination.items|length %}
 
         <div class="navigation text-center">
@@ -54,8 +59,9 @@
         </div>
 
     {% else %}
-        <p>
-            {{ 'message.empty_list'|trans }}
-        </p>
+        {% include 'default/_single_alert_message.html.twig' with {
+            type: 'warning',
+            message: 'message.empty_list'|trans
+        } %}
     {% endif %}
 {% endblock %}
