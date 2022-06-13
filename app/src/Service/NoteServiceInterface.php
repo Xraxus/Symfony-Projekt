@@ -22,4 +22,7 @@ interface NoteServiceInterface
      */
     public function getPaginatedList(int $page): PaginationInterface;
 
+    public function save(Note $note): void;
+
+    public function delete(Note $note): void;
 }

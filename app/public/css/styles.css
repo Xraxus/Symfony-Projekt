@@ -2,4 +2,6 @@
     display: flex;
     justify-content: space-between;
 }
-
+.navbar-dark .nav-link {
+    color: red;
+}

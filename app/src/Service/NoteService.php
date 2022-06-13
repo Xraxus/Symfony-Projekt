@@ -5,6 +5,7 @@
 
 namespace App\Service;
 
+use App\Entity\Note;
 use App\Repository\NoteRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -48,5 +49,29 @@ class NoteService implements NoteServiceInterface
             $page,
             NoteRepository::PAGINATOR_ITEMS_PER_PAGE
         );
+    }
+
+    /**
+     * Save entity.
+     *
+     * @param Note $note Note entity
+     */
+    public function save(Note $note): void
+    {
+        if ($note->getId() == null) {
+            $note->setCreateTime(new \DateTimeImmutable());
+        }
+
+        $this->noteRepository->save($note);
+    }
+
+    /**
+     * Delete entity.
+     *
+     * @param Note $note Note entity
+     */
+    public function delete(Note $note): void
+    {
+        $this->noteRepository->delete($note);
     }
 }
