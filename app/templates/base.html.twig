@@ -12,7 +12,7 @@
     {% endblock %}
 </head>
 <body>
-<nav class="navbar">
+<nav class="navbar text-uppercase">
     <ul class="nav">
         <li class="nav-item">
             <a class="nav-link" href="{{ url('note_index') }}">{{ 'label.note' |trans }}</a>
@@ -24,11 +24,21 @@
             <a class="nav-link" href="{{ url('category_index') }}">{{ 'label.category' |trans }}</a>
         </li>
     </ul>
+
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('app_logout') }}">{{ 'action.logout'|trans }}</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('app_login') }}">{{ 'action.login'|trans }}</a>
+        </li>
+    </ul>
 </nav>
 <div class="container-fluid">
     {% include 'default/_flash_messages.html.twig' %}
     {% block body %}{% endblock %}
 </div>
+
 {% block javascripts %}
     <script
             src="https://code.jquery.com/jquery-3.6.0.slim.min.js"

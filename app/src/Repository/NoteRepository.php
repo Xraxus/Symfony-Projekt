@@ -2,8 +2,11 @@
 
 namespace App\Repository;
 
+use App\Entity\Category;
 use App\Entity\Note;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -83,6 +86,27 @@ class NoteRepository extends ServiceEntityRepository
     {
         $this->_em->remove($note);
         $this->_em->flush();
+    }
+
+    /**
+     * Count notes by category.
+     *
+     * @param Category $category Category
+     *
+     * @return int Number of notes in category
+     *
+     * @throws NoResultException
+     * @throws NonUniqueResultException
+     */
+    public function countByCategory(Category $category): int
+    {
+        $qb = $this->getOrCreateQueryBuilder();
+
+        return $qb->select($qb->expr()->countDistinct('note.id'))
+            ->where('note.category = :category')
+            ->setParameter(':category', $category)
+            ->getQuery()
+            ->getSingleScalarResult();
     }
     /*
         public function add(Note $entity, bool $flush = false): void

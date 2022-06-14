@@ -7,8 +7,12 @@ namespace App\Service;
 
 use App\Entity\Category;
 use App\Repository\CategoryRepository;
+use App\Repository\NoteRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
+
 
 class CategoryService implements CategoryServiceInterface
 {
@@ -19,6 +23,9 @@ class CategoryService implements CategoryServiceInterface
      */
     private CategoryRepository $categoryRepository;
 
+    private NoteRepository $noteRepository;
+
+
     /**
      * Paginator.
      *
@@ -26,15 +33,18 @@ class CategoryService implements CategoryServiceInterface
      */
     private PaginatorInterface $paginator;
 
+
     /**
      * Constructor.
      *
      * @param CategoryRepository $categoryRepository
      * @param PaginatorInterface $paginator
+     * @param NoteRepository $noteRepository
      */
-    public function __construct(CategoryRepository $categoryRepository, PaginatorInterface $paginator)
+    public function __construct(CategoryRepository $categoryRepository, PaginatorInterface $paginator, NoteRepository $noteRepository)
     {
         $this->categoryRepository=$categoryRepository;
+        $this->noteRepository = $noteRepository;
         $this->paginator=$paginator;
     }
 
@@ -64,6 +74,24 @@ class CategoryService implements CategoryServiceInterface
     }
 
     /**
+     * Can Category be deleted?
+     *
+     * @param Category $category Category entity
+     *
+     * @return bool Result
+     */
+    public function canBeDeleted(Category $category): bool
+    {
+        try {
+            $result = $this->noteRepository->countByCategory($category);
+
+            return !($result > 0);
+        } catch (NoResultException|NonUniqueResultException) {
+            return false;
+        }
+    }
+
+    /**
      * Delete entity.
      *
      * @param Category $category Category entity
@@ -72,4 +100,6 @@ class CategoryService implements CategoryServiceInterface
     {
         $this->categoryRepository->delete($category);
     }
+
+
 }
