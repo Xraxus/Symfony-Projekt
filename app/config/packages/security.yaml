@@ -42,7 +42,10 @@ security:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
         - { path: ^/login, roles: PUBLIC_ACCESS}
-        - { path: ^/, roles: ROLE_USER}
+        - { path: ^/(task|note|category)/(.+)/(edit|delete), roles: ROLE_ADMIN}
+        - { path: ^/(task|note|category)/create, roles: ROLE_ADMIN}
+        - { path: ^/, roles: PUBLIC_ACCESS}
+
 
 when@test:
     security:
