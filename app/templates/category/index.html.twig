@@ -5,11 +5,8 @@
 {% endblock %}
 
 {% block body %}
-    <div class="flexMarginRight">
-    <h1>{{ 'title.category_list'|trans }}</h1>
-    <a href="{{ url('category_create') }}" title="{{ 'action.create' | trans }}" >
-        {{ 'action.create' | trans }}
-    </a>
+    <div>
+        <h1>{{ 'title.category_list'|trans }}</h1>
     </div>
     {% if pagination is defined and pagination.items|length %}
 
@@ -51,8 +48,14 @@
             </tbody>
         </table>
 
-        <div class="navigation text-center">
-            {{ knp_pagination_render(pagination) }}
+        <div class="flexMarginRight">
+            <div class="navigation text-center">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+
+            <a href="{{ url('category_create') }}" title="{{ 'action.create' | trans }}" >
+                {{ 'action.create' | trans }}
+            </a>
         </div>
 
     {% else %}

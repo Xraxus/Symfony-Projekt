@@ -100,7 +100,7 @@
       </trans-unit>
       <trans-unit id="action.create">
         <source>action.create</source>
-        <target>Stwórz</target>
+        <target>Stwórz rekord</target>
       </trans-unit>
       <trans-unit id="label.name">
         <source>label.name</source>

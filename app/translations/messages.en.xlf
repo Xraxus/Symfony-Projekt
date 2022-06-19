@@ -96,7 +96,7 @@
       </trans-unit>
       <trans-unit id="action.create">
         <source>action.create</source>
-        <target>Create</target>
+        <target>Create record</target>
       </trans-unit>
       <trans-unit id="label.name">
         <source>label.name</source>
