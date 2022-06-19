@@ -194,6 +194,30 @@
         <source>label.password</source>
         <target>Password</target>
       </trans-unit>
+      <trans-unit id="title.change_password">
+        <source>title.change_password</source>
+        <target>Change your password</target>
+      </trans-unit>
+      <trans-unit id="title.change_email">
+        <source>title.change_email</source>
+        <target>Change your email</target>
+      </trans-unit>
+      <trans-unit id="label_new_password">
+        <source>label_new_password</source>
+        <target>New password:</target>
+      </trans-unit>
+      <trans-unit id="label_repeat_password">
+        <source>label_repeat_password</source>
+        <target>Repeat password:</target>
+      </trans-unit>
+      <trans-unit id="label_submit">
+        <source>label_submit</source>
+        <target>Submit</target>
+      </trans-unit>
+      <trans-unit id="message.changed_successfully">
+        <source>message.changed_successfully</source>
+        <target>Changed successfully</target>
+      </trans-unit>
 
     </body>
   </file>

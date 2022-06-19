@@ -198,6 +198,30 @@
         <source>label.password</source>
         <target>Hasło</target>
       </trans-unit>
+      <trans-unit id="title.change_password">
+        <source>title.change_password</source>
+        <target>Zmień swoje hasło</target>
+      </trans-unit>
+      <trans-unit id="title.change_email">
+        <source>title.change_email</source>
+        <target>Zmień swój email</target>
+      </trans-unit>
+      <trans-unit id="label_new_password">
+        <source>label_new_password</source>
+        <target>Nowe hasło:</target>
+      </trans-unit>
+      <trans-unit id="label_repeat_password">
+        <source>label_repeat_password</source>
+        <target>Powtórz hasło:</target>
+      </trans-unit>
+      <trans-unit id="label_submit">
+        <source>label_submit</source>
+        <target>Zmień</target>
+      </trans-unit>
+      <trans-unit id="message.changed_successfully">
+        <source>message.changed_successfully</source>
+        <target>Zmieniono pomyślnie</target>
+      </trans-unit>
 
     </body>
   </file>
