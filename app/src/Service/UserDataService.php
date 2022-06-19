@@ -1,37 +1,46 @@
 <?php
 /**
- * User data Service
+ * User Service.
  */
 
 namespace App\Service;
 
-use App\Entity\Category;
 use App\Entity\User;
 use App\Repository\UserRepository;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class UserDataService
+/**
+ * Class UserService
+ */
+class UserDataService implements UserDataServiceInterface
 {
-    private UserRepository $UserRepository;
+    private UserRepository $userRepository;
+
+    private UserPasswordHasherInterface $passwordEncoder;
 
 
-
-
-
-    /**
-     * Constructor.
-     *
-     */
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepository $userRepository, UserPasswordHasherInterface $passwordEncoder)
     {
-        $this->UserRepository=$this->$userRepository;
+        $this->userRepository = $userRepository;
+        $this->passwordEncoder = $passwordEncoder;
     }
 
-
     /**
-     * Save entity.
+     * Save user.
+     * @param User $user
+     * @param string|null      $newPlainPassword
      */
-    public function save(User $user): void
+    public function save(User $user, ?string $newPlainPassword = null)
     {
-        $this->UserRepository->save($user);
+        if ($newPlainPassword) {
+            $encodedPassword = $this->passwordEncoder->hashPassword(
+                $user,
+                $newPlainPassword
+            );
+
+            $user->setPassword($encodedPassword);
+        }
+
+        $this->userRepository->save($user);
     }
 }

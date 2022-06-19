@@ -7,9 +7,9 @@ namespace App\Form\Type;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -32,29 +32,22 @@ class UserPasswordType extends AbstractType
     {
         $builder
 
-             /*->add(
-                'email',
-                EmailType::class,
-                [
+             ->add(
+                 'email',
+                 EmailType::class,
+                 [
                     'label' => 'label_email',
                     'required' => true,
                 ]
-            )*/
-            ->add(
-                'changePassword',
-                RepeatedType::class,
-                [
+             )
+            ->add('newPassword', RepeatedType::class, [
                 'mapped' => false,
                 'type' => PasswordType::class,
-                'invalid_message' => 'Hasła powinny się zgadzać',
-                'options' => ['attr' => ['class' => 'password-field']],
-                'first_options' => ['label' => 'label_new_password'],
-                'second_options' => ['label' => 'label_repeat_password'],
-                ]
-            )
-            ->add('submit', SubmitType::class, [
-            'label' => 'label_submit'
-        ])
+                'invalid_message' => 'Hasła muszą się zgadzać',
+                'options' => ['attr' => ['class' => 'form-control password-field']],
+                'first_options'  => ['label' => 'label_password'],
+                'second_options' => ['label' => 'label_password_repeat'],
+            ])
         ;
     }
 

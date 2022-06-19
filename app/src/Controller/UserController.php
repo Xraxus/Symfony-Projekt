@@ -1,61 +1,61 @@
-<?php /** @noinspection PhpPropertyOnlyWrittenInspection */
-
-/**
- * User controller.
- */
+<?php
 
 namespace App\Controller;
 
-use App\Form\Type\UserEmailType;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\User;
+use App\Form\Type\UserPasswordType;
+use App\Service\UserDataServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class UserController extends AbstractController
 {
-    /**
-     * Translator.
-     */
+    private UserDataServiceInterface $userService;
     private TranslatorInterface $translator;
 
-
-    #[Route('/panel', name: 'panel_password', methods: 'GET|PUT')]
-    public function changePassword(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
+    public function __construct(UserDataServiceInterface $userService, TranslatorInterface $translator)
     {
+        $this->userService = $userService;
         $this->translator = $translator;
+    }
 
+
+    #[Route(
+        '/panel',
+        name: 'user_panel',
+        methods: 'GET|POST',
+    )]
+
+
+    public function edit(Request $request): Response
+    {
+        /** @var $user User */
         $user = $this->getUser();
-        $form = $this->createForm(UserEmailType::class, $user, [
-            'method' => 'PUT',
-            'action' => $this->generateUrl('panel_password'),
-        ]);
+
+        $form = $this->createForm(UserPasswordType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            /**
-             * @var PasswordAuthenticatedUserInterface $user
-             */
-            $user->setPassword($userPasswordHasher->hashPassword($user, $form->get('changePassword')->getData()));
-            $entityManager->persist($user);
-            $entityManager->flush();
+            $newPasswordPlain = $form->get('newPassword')->getData();
+            $this->userService->save($user, $newPasswordPlain);
 
             $this->addFlash(
                 'success',
                 $this->translator->trans('message.changed_successfully')
             );
 
-            return $this->redirectToRoute('panel_password');
+            return $this->redirectToRoute('note_index');
         }
 
-        return $this->render('user/panel_password.html.twig', [
-            'form' => $form->createView(),
-            'user' => $user,
-        ]);
+        return $this->render(
+            'user/panel_password.html.twig',
+            [
+                'form' => $form->createView(),
+                'user' => $user,
+            ]
+        );
     }
-
 }

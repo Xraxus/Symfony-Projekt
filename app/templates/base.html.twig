@@ -30,6 +30,11 @@
             <li class="nav-item">
                 <span class="navbar-brand mb-0">{{ app.user.email }}</span>
             </li>
+            <li class="nav-item">
+                <a href="{{ url('user_panel', {id: app.user.id }) }}" title="{{ 'title.change_password'|trans }}">
+                    {{ 'title.change_password'|trans }}
+                </a>
+            </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ url('app_logout') }}">{{ 'action.logout'|trans }}</a>
         </li>
