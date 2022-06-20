@@ -26,14 +26,6 @@
         <source>message.record_not_found</source>
         <target>Record not found.</target>
       </trans-unit>
-      <trans-unit id="title.record_list">
-        <source>title.record_list</source>
-        <target>Records list</target>
-      </trans-unit>
-      <trans-unit id="title.record_view">
-        <source>title.record_view</source>
-        <target>Record view</target>
-      </trans-unit>
       <trans-unit id="message.created_successfully">
         <source>message.created_successfully</source>
         <target>Record created successfully.</target>
