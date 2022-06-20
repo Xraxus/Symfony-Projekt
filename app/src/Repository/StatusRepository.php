@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Status repository.
+ */
 namespace App\Repository;
 
 use App\Entity\Status;
@@ -8,6 +10,8 @@ use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
+ * Class StatusRepository
+ *
  * @extends ServiceEntityRepository<Status>
  *
  * @method Status|null find($id, $lockMode = null, $lockVersion = null)

@@ -9,6 +9,9 @@ use App\Entity\Note;
 use DateTimeImmutable;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
+/**
+ * Class NoteFixtures.
+ */
 class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
     /**
@@ -32,6 +35,7 @@ class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInter
             /** @var Category $category */
             $category = $this->getRandomReference('categories');
             $note->setCategory($category);
+
             return $note;
         });
 

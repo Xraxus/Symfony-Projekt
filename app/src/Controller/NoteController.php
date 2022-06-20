@@ -37,11 +37,11 @@ class NoteController extends AbstractController
 
     /**
      * @param NoteServiceInterface $noteService
-     * @param TranslatorInterface $translator
+     * @param TranslatorInterface  $translator
      */
     public function __construct(NoteServiceInterface $noteService, TranslatorInterface $translator)
     {
-        $this->noteService=$noteService;
+        $this->noteService = $noteService;
         $this->translator = $translator;
     }
 
@@ -49,6 +49,7 @@ class NoteController extends AbstractController
      * Index action.
      *
      * @param Request $request HTTP Request
+     *
      * @return Response HTTP response
      */
     #[Route(name: 'note_index', methods: 'GET')]
@@ -120,8 +121,8 @@ class NoteController extends AbstractController
     /**
      * Edit action.
      *
-     * @param Request  $request  HTTP request
-     * @param Note $note Note entity
+     * @param Request $request HTTP request
+     * @param Note    $note    Note entity
      *
      * @return Response HTTP response
      */
@@ -158,8 +159,8 @@ class NoteController extends AbstractController
     /**
      * Delete action.
      *
-     * @param Request  $request  HTTP request
-     * @param Note $note Note entity
+     * @param Request $request HTTP request
+     * @param Note    $note    Note entity
      *
      * @return Response HTTP response
      */
@@ -191,5 +192,4 @@ class NoteController extends AbstractController
             ]
         );
     }
-
 }

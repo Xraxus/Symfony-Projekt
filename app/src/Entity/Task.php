@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Task entity.
+ */
 namespace App\Entity;
 
 use App\Repository\TaskRepository;
@@ -74,6 +76,13 @@ class Task
         return $this->task_content;
     }
 
+    /**
+     * Task Content Setter.
+     *
+     * @param string $task_content
+     *
+     * @return $this
+     */
     public function setTaskContent(string $task_content): self
     {
         $this->task_content = $task_content;
@@ -100,19 +109,29 @@ class Task
     public function setTaskCreateTime(?DateTimeImmutable $task_create_time): void
     {
         $this->task_create_time = $task_create_time;
-
     }
 
+    /**
+     * Status getter
+     *
+     * @return Status|null
+     */
     public function getStatus(): ?Status
     {
         return $this->status;
     }
 
+    /**
+     * Status setter
+     *
+     * @param Status|null $status
+     *
+     * @return $this
+     */
     public function setStatus(?Status $status): self
     {
         $this->status = $status;
 
         return $this;
     }
-
 }

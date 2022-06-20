@@ -35,26 +35,30 @@ class CategoryController extends AbstractController
      */
     private TranslatorInterface $translator;
 
+
     /**
      * Constructor
+     *
+     * @param CategoryServiceInterface $categoryService
+     * @param TranslatorInterface      $translator
      */
     public function __construct(CategoryServiceInterface $categoryService, TranslatorInterface $translator)
     {
-        $this->categoryService=$categoryService;
+        $this->categoryService = $categoryService;
         $this->translator = $translator;
     }
 
     /**
      * Index action.
      *
-     * @param Request            $request        HTTP Request
+     * @param Request $request HTTP Request
      *
      * @return Response HTTP response
      */
     #[Route(name: 'category_index', methods: 'GET')]
     public function index(Request $request): Response
     {
-        $pagination=$this->categoryService->getPaginatedList(
+        $pagination = $this->categoryService->getPaginatedList(
             $request->query->getInt('page', 1)
         );
 

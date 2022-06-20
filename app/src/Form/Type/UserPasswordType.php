@@ -18,28 +18,33 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class UserPasswordType extends AbstractType
 {
+
     /**
      * Builds the form.
      *
      * This method is called for each type in the hierarchy starting from the
      * top most type. Type extensions can further modify the form.
      *
-     * @param array<string, mixed> $options
+     * @param FormBuilderInterface $builder
+     * @param array                $options
+     *
+     * @return void
      *
      * @see FormTypeExtensionInterface::buildForm()
+     *
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
 
-             ->add(
-                 'email',
-                 EmailType::class,
-                 [
+            ->add(
+                'email',
+                EmailType::class,
+                [
                     'label' => 'label.email',
                     'required' => true,
-                ]
-             )
+                 ]
+            )
             ->add('newPassword', RepeatedType::class, [
                 'mapped' => false,
                 'type' => PasswordType::class,
@@ -51,8 +56,13 @@ class UserPasswordType extends AbstractType
         ;
     }
 
+
     /**
      * Configures the options for this type.
+     *
+     * @param OptionsResolver $resolver
+     *
+     * @return void
      */
     public function configureOptions(OptionsResolver $resolver): void
     {

@@ -18,15 +18,20 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class NoteType extends AbstractType
 {
+
     /**
      * Builds the form.
      *
      * This method is called for each type in the hierarchy starting from the
      * top most type. Type extensions can further modify the form.
      *
-     * @param array<string, mixed> $options
+     * @param FormBuilderInterface $builder
+     * @param array                $options
+     *
+     * @return void
      *
      * @see FormTypeExtensionInterface::buildForm()
+     *
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -38,7 +43,7 @@ class NoteType extends AbstractType
                 'label' => 'label.title',
                 'required' => true,
                 'attr' => ['max_length' => 64],
-            ]
+                ]
             )
             ->add(
                 'NoteContent',
@@ -47,7 +52,7 @@ class NoteType extends AbstractType
                 'label' => 'label.content',
                 'required' => true,
                 'attr' => ['max_length' => 255],
-            ]
+                ]
             )
             ->add(
                 'Category',
@@ -61,8 +66,13 @@ class NoteType extends AbstractType
             );
     }
 
+
     /**
      * Configures the options for this type.
+     *
+     * @param OptionsResolver $resolver
+     *
+     * @return void
      */
     public function configureOptions(OptionsResolver $resolver): void
     {

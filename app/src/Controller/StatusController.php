@@ -33,13 +33,14 @@ class StatusController extends AbstractController
      */
     public function __construct(StatusServiceInterface $statusService)
     {
-        $this->statusService=$statusService;
+        $this->statusService = $statusService;
     }
 
     /**
      * Index action.
      *
      * @param Request $request HTTP Request
+     *
      * @return Response HTTP response
      */
     #[Route(name: 'status_index', methods: 'GET')]
@@ -51,7 +52,7 @@ class StatusController extends AbstractController
 
         return $this->render('status/index.html.twig', ['pagination' => $pagination]);
     }
-    
+
 /*    #[Route(
         '/{id}',
         name: 'status_show',

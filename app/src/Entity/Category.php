@@ -65,6 +65,7 @@ class Category
      * Setter for created at.
      *
      * @param string $category_name Category name
+     *
      * @return Category
      */
     public function setCategoryName(string $category_name): self

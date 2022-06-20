@@ -96,6 +96,7 @@ class Note
      * Setter for note title.
      *
      * @param string $note_title Note title
+     *
      * @return Note
      */
     public function setNoteTitle(string $note_title): self
@@ -119,6 +120,7 @@ class Note
      * Setter for note content.
      *
      * @param string $note_content Note content
+     *
      * @return Note
      */
     public function setNoteContent(string $note_content): self
@@ -159,6 +161,7 @@ class Note
     /**
      * Setter for note's category
      * @param Category|null $category
+     *
      * @return $this
      */
     public function setCategory(?Category $category): self

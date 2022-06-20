@@ -13,7 +13,9 @@ use Doctrine\ORM\NoResultException;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
-
+/**
+ * Class CategoryService.
+ */
 class CategoryService implements CategoryServiceInterface
 {
     /**
@@ -39,19 +41,20 @@ class CategoryService implements CategoryServiceInterface
      *
      * @param CategoryRepository $categoryRepository
      * @param PaginatorInterface $paginator
-     * @param NoteRepository $noteRepository
+     * @param NoteRepository     $noteRepository
      */
     public function __construct(CategoryRepository $categoryRepository, PaginatorInterface $paginator, NoteRepository $noteRepository)
     {
-        $this->categoryRepository=$categoryRepository;
+        $this->categoryRepository = $categoryRepository;
         $this->noteRepository = $noteRepository;
-        $this->paginator=$paginator;
+        $this->paginator = $paginator;
     }
 
     /**
      * Get paginated list
      *
      * @param int $page
+     *
      * @return PaginationInterface
      */
     public function getPaginatedList(int $page): PaginationInterface
@@ -100,6 +103,4 @@ class CategoryService implements CategoryServiceInterface
     {
         $this->categoryRepository->delete($category);
     }
-
-
 }

@@ -1,4 +1,7 @@
 <?php
+/**
+ * Task repository.
+ */
 
 namespace App\Repository;
 
@@ -8,6 +11,7 @@ use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
+ * Class TaskRepository
  * @extends ServiceEntityRepository<Task>
  *
  * @method Task|null find($id, $lockMode = null, $lockVersion = null)
@@ -52,18 +56,6 @@ class TaskRepository extends ServiceEntityRepository
     }
 
     /**
-     * Get or create new query builder.
-     *
-     * @param QueryBuilder|null $queryBuilder Query builder
-     *
-     * @return QueryBuilder Query builder
-     */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
-    {
-        return $queryBuilder ?? $this->createQueryBuilder('task');
-    }
-
-    /**
      * Save entity.
      *
      * @param Task $task Task entity
@@ -84,6 +76,19 @@ class TaskRepository extends ServiceEntityRepository
         $this->_em->remove($task);
         $this->_em->flush();
     }
+
+    /**
+     * Get or create new query builder.
+     *
+     * @param QueryBuilder|null $queryBuilder Query builder
+     *
+     * @return QueryBuilder Query builder
+     */
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    {
+        return $queryBuilder ?? $this->createQueryBuilder('task');
+    }
+
 
 
     /*public function add(Task $entity, bool $flush = false): void

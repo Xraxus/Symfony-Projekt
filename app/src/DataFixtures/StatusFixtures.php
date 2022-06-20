@@ -5,6 +5,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Status;
+
 /**
  * Class StatusFixtures.
  */
@@ -44,6 +45,4 @@ class StatusFixtures extends AbstractBaseFixtures
 
         $this->manager->flush();
     }
-
-
 }

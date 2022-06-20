@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * User repository.
+ */
 namespace App\Repository;
 
 use App\Entity\User;
@@ -11,6 +13,8 @@ use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
+ * Class UserRepository
+ *
  * @extends ServiceEntityRepository<User>
  *
  * @method User|null find($id, $lockMode = null, $lockVersion = null)
@@ -20,11 +24,24 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class UserRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
 {
+    /**
+     * Constructor.
+     *
+     * @param ManagerRegistry $registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, User::class);
     }
 
+    /**
+     * Add user function.
+     *
+     * @param User $entity
+     * @param bool $flush
+     *
+     * @return void
+     */
     public function add(User $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
@@ -34,6 +51,14 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         }
     }
 
+    /**
+     * Remove user function.
+     *
+     * @param User $entity
+     * @param bool $flush
+     *
+     * @return void
+     */
     public function remove(User $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
@@ -43,14 +68,27 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         }
     }
 
+    /**
+     * Save user function.
+     *
+     * @param UserInterface $user
+     *
+     * @return void
+     */
     public function save(UserInterface $user): void
     {
         $this->_em->persist($user);
         $this->_em->flush();
     }
 
+
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
+     *
+     * @param PasswordAuthenticatedUserInterface $user
+     * @param string                             $newHashedPassword
+     *
+     * @return void
      */
     public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
     {

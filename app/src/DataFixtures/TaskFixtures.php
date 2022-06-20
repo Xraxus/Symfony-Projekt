@@ -10,6 +10,9 @@ use App\Entity\Task;
 use DateTimeImmutable;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
+/**
+ * Class TaskFixtures
+ */
 class TaskFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
     /**
@@ -40,6 +43,11 @@ class TaskFixtures extends AbstractBaseFixtures implements DependentFixtureInter
         $this->manager->flush();
     }
 
+    /**
+     * getDependencies function.
+     *
+     * @return string[]
+     */
     public function getDependencies(): array
     {
         return [StatusFixtures::class];

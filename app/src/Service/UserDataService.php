@@ -1,6 +1,6 @@
 <?php
 /**
- * User Service.
+ * User data Service Interface.
  */
 
 namespace App\Service;
@@ -19,6 +19,12 @@ class UserDataService implements UserDataServiceInterface
     private UserPasswordHasherInterface $passwordEncoder;
 
 
+    /**
+     * Constructor.
+     *
+     * @param UserRepository              $userRepository
+     * @param UserPasswordHasherInterface $passwordEncoder
+     */
     public function __construct(UserRepository $userRepository, UserPasswordHasherInterface $passwordEncoder)
     {
         $this->userRepository = $userRepository;
@@ -27,8 +33,8 @@ class UserDataService implements UserDataServiceInterface
 
     /**
      * Save user.
-     * @param User $user
-     * @param string|null      $newPlainPassword
+     * @param User        $user
+     * @param string|null $newPlainPassword
      */
     public function save(User $user, ?string $newPlainPassword = null)
     {

@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Note Repository.
+ */
 namespace App\Repository;
 
 use App\Entity\Category;
@@ -11,6 +13,8 @@ use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
+ * Class NoteRepository
+ *
  * @extends ServiceEntityRepository<Note>
  *
  * @method Note|null find($id, $lockMode = null, $lockVersion = null)
@@ -55,18 +59,6 @@ class NoteRepository extends ServiceEntityRepository
     }
 
     /**
-     * Get or create new query builder.
-     *
-     * @param QueryBuilder|null $queryBuilder Query builder
-     *
-     * @return QueryBuilder Query builder
-     */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
-    {
-        return $queryBuilder ?? $this->createQueryBuilder('note');
-    }
-
-    /**
      * Save entity.
      *
      * @param Note $note Note entity
@@ -108,6 +100,20 @@ class NoteRepository extends ServiceEntityRepository
             ->getQuery()
             ->getSingleScalarResult();
     }
+
+    /**
+     * Get or create new query builder.
+     *
+     * @param QueryBuilder|null $queryBuilder Query builder
+     *
+     * @return QueryBuilder Query builder
+     */
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    {
+        return $queryBuilder ?? $this->createQueryBuilder('note');
+    }
+
+
     /*
         public function add(Note $entity, bool $flush = false): void
         {

@@ -27,8 +27,8 @@ class StatusService implements StatusServiceInterface
     /**
      * Constructor.
      *
-     * @param StatusRepository $statusRepository
-     * @param PaginatorInterface $paginator Paginator
+     * @param StatusRepository   $statusRepository
+     * @param PaginatorInterface $paginator        Paginator
      */
     public function __construct(StatusRepository $statusRepository, PaginatorInterface $paginator)
     {

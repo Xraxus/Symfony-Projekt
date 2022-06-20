@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * User Controller.
+ */
 namespace App\Controller;
 
 use App\Entity\User;
@@ -11,11 +13,20 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
+/**
+ * Class UserController.
+ */
 class UserController extends AbstractController
 {
     private UserDataServiceInterface $userService;
     private TranslatorInterface $translator;
 
+    /**
+     * Constructor.
+     *
+     * @param UserDataServiceInterface $userService
+     * @param TranslatorInterface      $translator
+     */
     public function __construct(UserDataServiceInterface $userService, TranslatorInterface $translator)
     {
         $this->userService = $userService;
@@ -23,6 +34,13 @@ class UserController extends AbstractController
     }
 
 
+    /**
+     * Edit Function.
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
     #[Route(
         '/panel',
         name: 'user_panel',
@@ -56,6 +74,4 @@ class UserController extends AbstractController
             ]
         );
     }
-
-
 }
