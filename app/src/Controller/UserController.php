@@ -28,9 +28,7 @@ class UserController extends AbstractController
         name: 'user_panel',
         methods: 'GET|POST',
     )]
-
-
-    public function edit(Request $request): Response
+    public function editPass(Request $request): Response
     {
         /** @var $user User */
         $user = $this->getUser();
@@ -58,4 +56,6 @@ class UserController extends AbstractController
             ]
         );
     }
+
+
 }

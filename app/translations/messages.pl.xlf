@@ -140,7 +140,7 @@
       </trans-unit>
       <trans-unit id="action.back_to_list">
         <source>action.back_to_list</source>
-        <target>Wróć do listy</target>
+        <target>Wróć</target>
       </trans-unit>
       <trans-unit id="message.form_error">
         <source>message.form_error</source>
@@ -192,19 +192,15 @@
       </trans-unit>
       <trans-unit id="label.email">
         <source>label.email</source>
-        <target>Email</target>
+        <target>Email:</target>
       </trans-unit>
       <trans-unit id="label.password">
         <source>label.password</source>
-        <target>Hasło</target>
+        <target>Hasło:</target>
       </trans-unit>
       <trans-unit id="title.change_password">
         <source>title.change_password</source>
-        <target>Zmień swoje hasło</target>
-      </trans-unit>
-      <trans-unit id="title.change_email">
-        <source>title.change_email</source>
-        <target>Zmień swój email</target>
+        <target>Zmień swoje dane</target>
       </trans-unit>
       <trans-unit id="label_new_password">
         <source>label_new_password</source>
@@ -214,14 +210,19 @@
         <source>label_repeat_password</source>
         <target>Powtórz hasło:</target>
       </trans-unit>
-      <trans-unit id="label_submit">
-        <source>label_submit</source>
-        <target>Zmień</target>
-      </trans-unit>
       <trans-unit id="message.changed_successfully">
         <source>message.changed_successfully</source>
         <target>Zmieniono pomyślnie</target>
       </trans-unit>
+      <trans-unit id="title.account_panel">
+        <source>title.account_panel</source>
+        <target>Panel konta</target>
+     </trans-unit>
+     <trans-unit id="action.submit">
+       <source>action.submit</source>
+       <target>Potwierdź</target>
+     </trans-unit>
+
 
     </body>
   </file>

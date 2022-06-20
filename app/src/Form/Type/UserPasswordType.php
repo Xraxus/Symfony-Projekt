@@ -36,7 +36,7 @@ class UserPasswordType extends AbstractType
                  'email',
                  EmailType::class,
                  [
-                    'label' => 'label_email',
+                    'label' => 'label.email',
                     'required' => true,
                 ]
              )
@@ -45,8 +45,8 @@ class UserPasswordType extends AbstractType
                 'type' => PasswordType::class,
                 'invalid_message' => 'Hasła muszą się zgadzać',
                 'options' => ['attr' => ['class' => 'form-control password-field']],
-                'first_options'  => ['label' => 'label_password'],
-                'second_options' => ['label' => 'label_password_repeat'],
+                'first_options'  => ['label' => 'label_new_password'],
+                'second_options' => ['label' => 'label_repeat_password'],
             ])
         ;
     }
