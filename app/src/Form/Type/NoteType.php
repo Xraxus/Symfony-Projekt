@@ -25,13 +25,12 @@ class NoteType extends AbstractType
      * This method is called for each type in the hierarchy starting from the
      * top most type. Type extensions can further modify the form.
      *
+     * @see FormTypeExtensionInterface::buildForm()
+     *
      * @param FormBuilderInterface $builder
      * @param array                $options
      *
      * @return void
-     *
-     * @see FormTypeExtensionInterface::buildForm()
-     *
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -78,6 +77,7 @@ class NoteType extends AbstractType
     {
         $resolver->setDefaults(['data_class' => Note::class]);
     }
+
 
     /**
      * Returns the prefix of the template block name for this type.

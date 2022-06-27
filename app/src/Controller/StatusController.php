@@ -18,13 +18,11 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/status')]
 class StatusController extends AbstractController
 {
-
     /**
      * Status service.
-     *
-     * @var StatusServiceInterface
      */
     private StatusServiceInterface $statusService;
+
 
     /**
      * Constructor.
@@ -53,17 +51,17 @@ class StatusController extends AbstractController
         return $this->render('status/index.html.twig', ['pagination' => $pagination]);
     }
 
-/*    #[Route(
-        '/{id}',
-        name: 'status_show',
-        requirements: ['id' => '[1-9]\d*'],
-        methods: 'GET',
-    )]
-    public function show(Status $status): Response
-    {
-        return $this->render(
-            'status/show.html.twig',
-            ['status' => $status]
-        );
-    }*/
+    /*    #[Route(
+            '/{id}',
+            name: 'status_show',
+            requirements: ['id' => '[1-9]\d*'],
+            methods: 'GET',
+        )]
+        public function show(Status $status): Response
+        {
+            return $this->render(
+                'status/show.html.twig',
+                ['status' => $status]
+            );
+        }*/
 }

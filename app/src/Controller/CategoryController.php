@@ -22,22 +22,18 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class CategoryController extends AbstractController
 {
     /**
-     * Category Service
-     *
-     * @var CategoryServiceInterface
+     * Category Service.
      */
     private CategoryServiceInterface $categoryService;
 
     /**
      * Translator.
-     *
-     * @var TranslatorInterface
      */
     private TranslatorInterface $translator;
 
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param CategoryServiceInterface $categoryService
      * @param TranslatorInterface      $translator
@@ -86,7 +82,6 @@ class CategoryController extends AbstractController
         );
     }
 
-
     /**
      * Create action.
      *
@@ -107,7 +102,6 @@ class CategoryController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->categoryService->save($category);
-
 
             $this->addFlash(
                 'success',
@@ -159,7 +153,6 @@ class CategoryController extends AbstractController
             ]
         );
     }
-
 
     /**
      * Delete action.

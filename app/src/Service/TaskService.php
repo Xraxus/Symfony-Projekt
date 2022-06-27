@@ -60,12 +60,13 @@ class TaskService implements TaskServiceInterface
      */
     public function save(Task $task): void
     {
-        if ($task->getId() == null) {
+        if (null == $task->getId()) {
             $task->setTaskCreateTime(new \DateTimeImmutable());
         }
 
         $this->taskRepository->save($task);
     }
+
 
     /**
      * Delete entity.

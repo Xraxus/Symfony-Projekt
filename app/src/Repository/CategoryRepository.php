@@ -2,6 +2,7 @@
 /**
  * Category Repository.
  */
+
 namespace App\Repository;
 
 use App\Entity\Category;
@@ -86,7 +87,6 @@ class CategoryRepository extends ServiceEntityRepository
     {
         return $queryBuilder ?? $this->createQueryBuilder('category');
     }
-
 
     /*    public function add(Category $entity, bool $flush = false): void
         {

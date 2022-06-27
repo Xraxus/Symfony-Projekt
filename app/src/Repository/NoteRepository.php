@@ -2,6 +2,7 @@
 /**
  * Note Repository.
  */
+
 namespace App\Repository;
 
 use App\Entity\Category;
@@ -13,7 +14,7 @@ use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * Class NoteRepository
+ * Class NoteRepository.
  *
  * @extends ServiceEntityRepository<Note>
  *
@@ -33,7 +34,7 @@ class NoteRepository extends ServiceEntityRepository
      *
      * @constant int
      */
-    const PAGINATOR_ITEMS_PER_PAGE = 10;
+    public const PAGINATOR_ITEMS_PER_PAGE = 10;
 
     /**
      * Constructor.
@@ -45,17 +46,22 @@ class NoteRepository extends ServiceEntityRepository
         parent::__construct($registry, Note::class);
     }
 
+
     /**
      * Query all records.
      *
-     * @return QueryBuilder Query builder
+     * @param array $filters
+     *
+     * @return QueryBuilder
      */
-    public function queryAll(): QueryBuilder
+    public function queryAll(array $filters): QueryBuilder
     {
-        return $this->getOrCreateQueryBuilder()
+        $queryBuilder = $this->getOrCreateQueryBuilder()
             ->select('note', 'category')
             ->join('note.category', 'category')
-            ->orderBy('note.note_create_time', 'DESC');
+            ->orderBy('note.noteCreateTime', 'DESC');
+
+        return $this->applyFiltersToList($queryBuilder, $filters);
     }
 
     /**
@@ -113,6 +119,23 @@ class NoteRepository extends ServiceEntityRepository
         return $queryBuilder ?? $this->createQueryBuilder('note');
     }
 
+    /**
+     * Apply filters to paginated list.
+     *
+     * @param QueryBuilder          $queryBuilder Query builder
+     * @param array<string, object> $filters      Filters array
+     *
+     * @return QueryBuilder Query builder
+     */
+    private function applyFiltersToList(QueryBuilder $queryBuilder, array $filters = []): QueryBuilder
+    {
+        if (isset($filters['category']) && $filters['category'] instanceof Category) {
+            $queryBuilder->andWhere('category = :category')
+                ->setParameter('category', $filters['category']);
+        }
+
+        return $queryBuilder;
+    }
 
     /*
         public function add(Note $entity, bool $flush = false): void

@@ -1,7 +1,8 @@
 <?php
 /**
- * Status fixtures
+ * Status fixtures.
  */
+
 namespace App\DataFixtures;
 
 use App\Entity\Status;
@@ -13,11 +14,9 @@ class StatusFixtures extends AbstractBaseFixtures
 {
     /**
      * Load data.
-     * @return void
      */
     public function loadData(): void
     {
-
         $status = new Status();
         $status->setId(1);
         $status->setStatusName('Oczekujący (Pending)');
@@ -41,7 +40,6 @@ class StatusFixtures extends AbstractBaseFixtures
         $status->setStatusName('Porzucono (Dropped)');
         $this->manager->persist($status);
         $this->addReference(sprintf('%s_%d', 'status', 4), $status);
-
 
         $this->manager->flush();
     }

@@ -32,7 +32,11 @@
                     <td>{{ note.NoteTitle }}</td>
                     <td>{{ note.NoteContent }}</td>
                     <td>{{ note.CreateTime|format_date('long') }}</td>
-                    <td>{{ note.category.CategoryName }}</td>
+                    <td>
+                        <a href="{{ url('note_index', {'filters.category_id' : note.category.id}) }}" title="{{ note.category.CategoryName }}">
+                            {{ note.category.CategoryName }}
+                        </a>
+                    </td>
                     <td>
                         <a href="{{ url('note_show', {id: note.id}) }}" title="{{ 'action.view'|trans }}">
                             {{ 'action.view'|trans }}

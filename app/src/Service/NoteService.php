@@ -17,26 +17,30 @@ class NoteService implements NoteServiceInterface
 {
     /**
      * Note repository.
-     *
-     * @var NoteRepository
      */
     private NoteRepository $noteRepository;
 
     /**
      * Paginator.
-     *
-     * @var PaginatorInterface
      */
     private PaginatorInterface $paginator;
 
     /**
+     * Category service.
+     */
+    private CategoryServiceInterface $categoryService;
+
+
+    /**
      * Constructor.
      *
-     * @param NoteRepository     $noteRepository
-     * @param PaginatorInterface $paginator
+     * @param NoteRepository           $noteRepository
+     * @param PaginatorInterface       $paginator
+     * @param CategoryServiceInterface $categoryService
      */
-    public function __construct(NoteRepository $noteRepository, PaginatorInterface $paginator)
+    public function __construct(NoteRepository $noteRepository, PaginatorInterface $paginator, CategoryServiceInterface $categoryService)
     {
+        $this->categoryService = $categoryService;
         $this->noteRepository = $noteRepository;
         $this->paginator = $paginator;
     }
@@ -44,14 +48,17 @@ class NoteService implements NoteServiceInterface
     /**
      * Get paginated list.
      *
-     * @param int $page Page number
+     * @param int                $page    Page number
+     * @param array<string, int> $filters Filters array
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
-    public function getPaginatedList(int $page): PaginationInterface
+    public function getPaginatedList(int $page, array $filters = []): PaginationInterface
     {
+        $filters = $this->prepareFilters($filters);
+
         return $this->paginator->paginate(
-            $this->noteRepository->queryAll(),
+            $this->noteRepository->queryAll($filters),
             $page,
             NoteRepository::PAGINATOR_ITEMS_PER_PAGE
         );
@@ -64,7 +71,7 @@ class NoteService implements NoteServiceInterface
      */
     public function save(Note $note): void
     {
-        if ($note->getId() == null) {
+        if (null == $note->getId()) {
             $note->setCreateTime(new \DateTimeImmutable());
         }
 
@@ -79,5 +86,25 @@ class NoteService implements NoteServiceInterface
     public function delete(Note $note): void
     {
         $this->noteRepository->delete($note);
+    }
+
+    /**
+     * Prepare filters for the notes list.
+     *
+     * @param array<string, int> $filters Raw filters from request
+     *
+     * @return array<string, object> Result array of filters
+     */
+    public function prepareFilters(array $filters): array
+    {
+        $resultFilters = [];
+        if (!empty($filters['category_id'])) {
+            $category = $this->categoryService->findOneById($filters['category_id']);
+            if (null !== $category) {
+                $resultFilters['category'] = $category;
+            }
+        }
+
+        return $resultFilters;
     }
 }

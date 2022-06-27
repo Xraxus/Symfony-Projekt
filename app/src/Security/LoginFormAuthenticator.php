@@ -57,6 +57,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
         $this->urlGenerator = $urlGenerator;
     }
 
+
     /**
      * Does the authenticator support the given Request?
      *
@@ -64,7 +65,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
      *
      * @param Request $request HTTP request
      *
-     * @return bool Result
+     * @return bool
      */
     public function supports(Request $request): bool
     {
@@ -84,13 +85,11 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
      * You may throw any AuthenticationException in this method in case of error (e.g.
      * a UserNotFoundException when the user cannot be found).
      *
-     *
-     *
      * @throws AuthenticationException
      *
      * @param Request $request
      *
-     * @return Passport Passport
+     * @return Passport
      */
     public function authenticate(Request $request): Passport
     {

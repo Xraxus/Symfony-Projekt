@@ -2,6 +2,7 @@
 /**
  * User repository.
  */
+
 namespace App\Repository;
 
 use App\Entity\User;
@@ -13,7 +14,7 @@ use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * Class UserRepository
+ * Class UserRepository.
  *
  * @extends ServiceEntityRepository<User>
  *
@@ -24,6 +25,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class UserRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
 {
+
     /**
      * Constructor.
      *
@@ -33,6 +35,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     {
         parent::__construct($registry, User::class);
     }
+
 
     /**
      * Add user function.
@@ -51,6 +54,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         }
     }
 
+
     /**
      * Remove user function.
      *
@@ -67,6 +71,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             $this->getEntityManager()->flush();
         }
     }
+
 
     /**
      * Save user function.

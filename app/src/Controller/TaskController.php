@@ -21,7 +21,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Route('/task')]
 class TaskController extends AbstractController
 {
-
     /**
      * Task service.
      */
@@ -29,12 +28,12 @@ class TaskController extends AbstractController
 
     /**
      * Translator.
-     *
-     * @var TranslatorInterface
      */
     private TranslatorInterface $translator;
 
+
     /**
+     *
      * Constructor.
      *
      * @param TaskServiceInterface $taskService
@@ -45,7 +44,6 @@ class TaskController extends AbstractController
         $this->taskService = $taskService;
         $this->translator = $translator;
     }
-
 
     /**
      * Index action.

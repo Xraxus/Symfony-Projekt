@@ -2,6 +2,7 @@
 /**
  * Status repository.
  */
+
 namespace App\Repository;
 
 use App\Entity\Status;
@@ -10,7 +11,7 @@ use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * Class StatusRepository
+ * Class StatusRepository.
  *
  * @extends ServiceEntityRepository<Status>
  *

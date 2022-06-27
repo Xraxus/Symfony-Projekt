@@ -7,7 +7,6 @@ namespace App\Controller;
 
 use App\Entity\Note;
 use App\Form\Type\NoteType;
-
 use App\Service\NoteServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -22,20 +21,20 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Route('/note')]
 class NoteController extends AbstractController
 {
-
     /**
-     * Note Service
+     * Note Service.
      */
     private NoteServiceInterface $noteService;
 
     /**
      * Translator.
-     *
-     * @var TranslatorInterface
      */
     private TranslatorInterface $translator;
 
+
     /**
+     * Constructor.
+     *
      * @param NoteServiceInterface $noteService
      * @param TranslatorInterface  $translator
      */
@@ -55,8 +54,10 @@ class NoteController extends AbstractController
     #[Route(name: 'note_index', methods: 'GET')]
     public function index(Request $request): Response
     {
+        $filters = $this->getFilters($request);
         $pagination = $this->noteService->getPaginatedList(
             $request->query->getInt('page', 1),
+            $filters
         );
 
         return $this->render('note/index.html.twig', ['pagination' => $pagination]);
@@ -191,5 +192,22 @@ class NoteController extends AbstractController
                 'note' => $note,
             ]
         );
+    }
+
+    /**
+     * Get filters from request.
+     *
+     * @param Request $request HTTP request
+     *
+     * @return array<string, int> Array of filters
+     *
+     * @psalm-return array{category_id: int, tag_id: int, status_id: int}
+     */
+    private function getFilters(Request $request): array
+    {
+        $filters = [];
+        $filters['category_id'] = $request->query->getInt('filters_category_id');
+
+        return $filters;
     }
 }

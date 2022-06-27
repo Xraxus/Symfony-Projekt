@@ -1,8 +1,9 @@
 <?php
 
 /**
- * Task fixtures
+ * Task fixtures.
  */
+
 namespace App\DataFixtures;
 
 use App\Entity\Status;
@@ -11,7 +12,7 @@ use DateTimeImmutable;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 /**
- * Class TaskFixtures
+ * Class TaskFixtures.
  */
 class TaskFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
@@ -38,7 +39,6 @@ class TaskFixtures extends AbstractBaseFixtures implements DependentFixtureInter
 
             return $task;
         });
-
 
         $this->manager->flush();
     }

@@ -3,6 +3,7 @@
 /**
  * Note entity.
  */
+
 namespace App\Entity;
 
 use App\Repository\NoteRepository;
@@ -14,10 +15,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Note class.
  */
-
 #[ORM\Entity(repositoryClass: NoteRepository::class)]
 #[ORM\Table(name: 'notes')]
-#[UniqueEntity(fields: ['note_title'])]
+#[UniqueEntity(fields: ['noteTitle'])]
 class Note
 {
     /**
@@ -39,7 +39,7 @@ class Note
     #[Assert\Type('string')]
     #[Assert\NotBlank]
     #[Assert\Length(min: 3, max: 64)]
-    private ?string $note_title;
+    private ?string $noteTitle;
 
     /**
      * Note content.
@@ -50,7 +50,7 @@ class Note
     #[Assert\Type('string')]
     #[Assert\NotBlank]
     #[Assert\Length(min: 3, max: 255)]
-    private ?string $note_content;
+    private ?string $noteContent;
 
     /**
      * Created at.
@@ -59,7 +59,7 @@ class Note
      */
     #[ORM\Column(type: 'datetime_immutable')]
     #[Assert\Type(DateTimeImmutable::class)]
-    private ?DateTimeImmutable $note_create_time;
+    private ?DateTimeImmutable $noteCreateTime;
 
     /**
      * Category.
@@ -89,19 +89,19 @@ class Note
      */
     public function getNoteTitle(): ?string
     {
-        return $this->note_title;
+        return $this->noteTitle;
     }
 
     /**
      * Setter for note title.
      *
-     * @param string $note_title Note title
+     * @param string $noteTitle Note title
      *
      * @return Note
      */
-    public function setNoteTitle(string $note_title): self
+    public function setNoteTitle(string $noteTitle): self
     {
-        $this->note_title = $note_title;
+        $this->noteTitle = $noteTitle;
 
         return $this;
     }
@@ -113,22 +113,23 @@ class Note
      */
     public function getNoteContent(): ?string
     {
-        return $this->note_content;
+        return $this->noteContent;
     }
 
     /**
      * Setter for note content.
      *
-     * @param string $note_content Note content
+     * @param string $noteContent Note content
      *
      * @return Note
      */
-    public function setNoteContent(string $note_content): self
+    public function setNoteContent(string $noteContent): self
     {
-        $this->note_content = $note_content;
+        $this->noteContent = $noteContent;
 
         return $this;
     }
+
     /**
      * Getter for note create time.
      *
@@ -136,21 +137,26 @@ class Note
      */
     public function getCreateTime(): ?DateTimeImmutable
     {
-        return $this->note_create_time;
+        return $this->noteCreateTime;
     }
+
 
     /**
      * Setter for note create time.
      *
-     * @param DateTimeImmutable|null $note_create_time
+     * @param DateTimeImmutable|null $noteCreateTime
+     *
+     * @return void
      */
-    public function setCreateTime(?DateTimeImmutable $note_create_time): void
+    public function setCreateTime(?DateTimeImmutable $noteCreateTime): void
     {
-        $this->note_create_time = $note_create_time;
+        $this->noteCreateTime = $noteCreateTime;
     }
 
+
     /**
-     * Getter for note's category
+     * Getter for note's category.
+     *
      * @return Category|null
      */
     public function getCategory(): ?Category
@@ -158,8 +164,11 @@ class Note
         return $this->category;
     }
 
+
     /**
-     * Setter for note's category
+     * Setter for note's category.
+     *
+     *
      * @param Category|null $category
      *
      * @return $this

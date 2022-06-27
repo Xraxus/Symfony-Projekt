@@ -11,7 +11,8 @@ use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * Class TaskRepository
+ * Class TaskRepository.
+ *
  * @extends ServiceEntityRepository<Task>
  *
  * @method Task|null find($id, $lockMode = null, $lockVersion = null)
@@ -30,7 +31,7 @@ class TaskRepository extends ServiceEntityRepository
      *
      * @constant int
      */
-    const PAGINATOR_ITEMS_PER_PAGE = 10;
+    public const PAGINATOR_ITEMS_PER_PAGE = 10;
 
     /**
      * Constructor.
@@ -51,8 +52,8 @@ class TaskRepository extends ServiceEntityRepository
     {
         return $this->getOrCreateQueryBuilder()
             ->select('task', 'status')
-            ->join("task.status", "status")
-            ->orderBy('task.task_create_time', 'DESC');
+            ->join('task.status', 'status')
+            ->orderBy('task.taskCreateTime', 'DESC');
     }
 
     /**
@@ -88,8 +89,6 @@ class TaskRepository extends ServiceEntityRepository
     {
         return $queryBuilder ?? $this->createQueryBuilder('task');
     }
-
-
 
     /*public function add(Task $entity, bool $flush = false): void
     {

@@ -1,6 +1,6 @@
 <?php
 /**
- * Category Service
+ * Category Service.
  */
 
 namespace App\Service;
@@ -20,18 +20,13 @@ class CategoryService implements CategoryServiceInterface
 {
     /**
      * Category Repository.
-     *
-     * @var CategoryRepository
      */
     private CategoryRepository $categoryRepository;
 
     private NoteRepository $noteRepository;
 
-
     /**
      * Paginator.
-     *
-     * @var PaginatorInterface
      */
     private PaginatorInterface $paginator;
 
@@ -50,8 +45,9 @@ class CategoryService implements CategoryServiceInterface
         $this->paginator = $paginator;
     }
 
+
     /**
-     * Get paginated list
+     * Get paginated list.
      *
      * @param int $page
      *
@@ -102,5 +98,19 @@ class CategoryService implements CategoryServiceInterface
     public function delete(Category $category): void
     {
         $this->categoryRepository->delete($category);
+    }
+
+    /**
+     * Find by id.
+     *
+     * @param int $id Category id
+     *
+     * @return Category|null Category entity
+     *
+     * @throws NonUniqueResultException
+     */
+    public function findOneById(int $id): ?Category
+    {
+        return $this->categoryRepository->findOneById($id);
     }
 }

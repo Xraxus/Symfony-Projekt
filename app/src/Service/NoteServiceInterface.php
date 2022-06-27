@@ -35,4 +35,13 @@ interface NoteServiceInterface
      * @param Note $note Note entity
      */
     public function delete(Note $note): void;
+
+    /**
+     * Prepare filters for the notes list.
+     *
+     * @param array<string, int> $filters Raw filters from request
+     *
+     * @return array<string, object> Result array of filters
+     */
+    public function prepareFilters(array $filters): array;
 }

@@ -13,13 +13,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Category class.
  */
-
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 #[ORM\Table(name: 'categories')]
-#[UniqueEntity(fields: ['category_name'])]
+#[UniqueEntity(fields: ['categoryName'])]
 class Category
 {
-
     /**
      * Primary key.
      *
@@ -39,7 +37,7 @@ class Category
     #[Assert\Type('string')]
     #[Assert\NotBlank]
     #[Assert\Length(min: 3, max: 64)]
-    private ?string $category_name;
+    private ?string $categoryName;
 
     /**
      * Getter for Id.
@@ -58,19 +56,19 @@ class Category
      */
     public function getCategoryName(): ?string
     {
-        return $this->category_name;
+        return $this->categoryName;
     }
 
     /**
      * Setter for created at.
      *
-     * @param string $category_name Category name
+     * @param string $categoryName Category name
      *
      * @return Category
      */
-    public function setCategoryName(string $category_name): self
+    public function setCategoryName(string $categoryName): self
     {
-        $this->category_name = $category_name;
+        $this->categoryName = $categoryName;
 
         return $this;
     }

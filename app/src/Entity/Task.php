@@ -2,6 +2,7 @@
 /**
  * Task entity.
  */
+
 namespace App\Entity;
 
 use App\Repository\TaskRepository;
@@ -15,7 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 #[ORM\Entity(repositoryClass: TaskRepository::class)]
 #[ORM\Table(name: 'tasks')]
-#[UniqueEntity(fields: ['task_content'])]
+#[UniqueEntity(fields: ['taskContent'])]
 class Task
 {
     /**
@@ -37,7 +38,7 @@ class Task
     #[Assert\Type('string')]
     #[Assert\NotBlank]
     #[Assert\Length(min: 3, max: 255)]
-    private ?string $task_content;
+    private ?string $taskContent;
 
     /**
      * Created at.
@@ -46,10 +47,11 @@ class Task
      */
     #[ORM\Column(type: 'datetime_immutable')]
     #[Assert\Type(DateTimeImmutable::class)]
-    private ?DateTimeImmutable $task_create_time;
+    private ?DateTimeImmutable $taskCreateTime;
 
     /**
      * Status.
+     *
      * @var Status|null
      */
     #[ORM\ManyToOne(targetEntity: Status::class)]
@@ -73,19 +75,21 @@ class Task
      */
     public function getTaskContent(): ?string
     {
-        return $this->task_content;
+        return $this->taskContent;
     }
+
 
     /**
      * Task Content Setter.
      *
-     * @param string $task_content
+     *
+     * @param string $taskContent
      *
      * @return $this
      */
-    public function setTaskContent(string $task_content): self
+    public function setTaskContent(string $taskContent): self
     {
-        $this->task_content = $task_content;
+        $this->taskContent = $taskContent;
 
         return $this;
     }
@@ -97,22 +101,25 @@ class Task
      */
     public function getTaskCreateTime(): ?DateTimeImmutable
     {
-        return $this->task_create_time;
+        return $this->taskCreateTime;
     }
 
 
     /**
      * Setter for task create time.
      *
-     * @param DateTimeImmutable|null $task_create_time
+     * @param DateTimeImmutable|null $taskCreateTime
+     *
+     * @return void
      */
-    public function setTaskCreateTime(?DateTimeImmutable $task_create_time): void
+    public function setTaskCreateTime(?DateTimeImmutable $taskCreateTime): void
     {
-        $this->task_create_time = $task_create_time;
+        $this->taskCreateTime = $taskCreateTime;
     }
 
+
     /**
-     * Status getter
+     * Status getter.
      *
      * @return Status|null
      */
@@ -121,8 +128,9 @@ class Task
         return $this->status;
     }
 
+
     /**
-     * Status setter
+     * Status setter.
      *
      * @param Status|null $status
      *

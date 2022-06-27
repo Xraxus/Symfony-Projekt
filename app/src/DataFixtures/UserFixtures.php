@@ -36,7 +36,6 @@ class UserFixtures extends AbstractBaseFixtures
             return;
         }
 
-
         $this->createMany(1, 'admins', function (int $i) {
             $user = new User();
             $user->setEmail(sprintf('admin%d@example.com', $i));

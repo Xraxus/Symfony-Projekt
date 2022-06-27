@@ -13,10 +13,14 @@ use App\Entity\User;
  */
 interface UserDataServiceInterface
 {
+
     /**
      * Save user.
+     *
      * @param User        $user
      * @param string|null $newPlainPassword
+     *
+     * @return mixed
      */
     public function save(User $user, ?string $newPlainPassword = null);
 }

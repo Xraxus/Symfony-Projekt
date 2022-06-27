@@ -2,6 +2,7 @@
 /**
  * User Controller.
  */
+
 namespace App\Controller;
 
 use App\Entity\User;
@@ -21,6 +22,7 @@ class UserController extends AbstractController
     private UserDataServiceInterface $userService;
     private TranslatorInterface $translator;
 
+
     /**
      * Constructor.
      *
@@ -32,7 +34,6 @@ class UserController extends AbstractController
         $this->userService = $userService;
         $this->translator = $translator;
     }
-
 
     /**
      * Edit Function.
