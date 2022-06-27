@@ -32,7 +32,7 @@
       </trans-unit>
       <trans-unit id="message.category_contains_tasks">
         <source>message.category_contains_tasks</source>
-        <target>Ta kategoria zawiera zadania.</target>
+        <target>Ta kategoria zawiera notatki.</target>
       </trans-unit>
       <trans-unit id="message.deleted_successfully">
         <source>message.deleted_successfully</source>
