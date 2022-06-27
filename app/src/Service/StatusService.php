@@ -24,7 +24,6 @@ class StatusService implements StatusServiceInterface
      */
     private PaginatorInterface $paginator;
 
-
     /**
      * Constructor.
      *

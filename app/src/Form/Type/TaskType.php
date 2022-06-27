@@ -18,7 +18,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class TaskType extends AbstractType
 {
-
     /**
      * Builds the form.
      *
@@ -57,7 +56,6 @@ class TaskType extends AbstractType
             );
     }
 
-
     /**
      * Configures the options for this type.
      *
@@ -69,7 +67,6 @@ class TaskType extends AbstractType
     {
         $resolver->setDefaults(['data_class' => Task::class]);
     }
-
 
     /**
      * Returns the prefix of the template block name for this type.

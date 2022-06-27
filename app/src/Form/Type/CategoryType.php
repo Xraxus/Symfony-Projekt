@@ -16,7 +16,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class CategoryType extends AbstractType
 {
-
     /**
      * Builds the form.
      *
@@ -43,7 +42,6 @@ class CategoryType extends AbstractType
         );
     }
 
-
     /**
      * Configures the options for this type.
      *
@@ -55,7 +53,6 @@ class CategoryType extends AbstractType
     {
         $resolver->setDefaults(['data_class' => Category::class]);
     }
-
 
     /**
      * Returns the prefix of the template block name for this type.

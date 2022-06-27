@@ -31,7 +31,6 @@ class NoteController extends AbstractController
      */
     private TranslatorInterface $translator;
 
-
     /**
      * Constructor.
      *

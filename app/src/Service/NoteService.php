@@ -30,7 +30,6 @@ class NoteService implements NoteServiceInterface
      */
     private CategoryServiceInterface $categoryService;
 
-
     /**
      * Constructor.
      *

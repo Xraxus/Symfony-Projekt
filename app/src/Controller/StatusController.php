@@ -23,7 +23,6 @@ class StatusController extends AbstractController
      */
     private StatusServiceInterface $statusService;
 
-
     /**
      * Constructor.
      *

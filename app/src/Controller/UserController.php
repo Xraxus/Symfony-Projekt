@@ -20,8 +20,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class UserController extends AbstractController
 {
     private UserDataServiceInterface $userService;
-    private TranslatorInterface $translator;
 
+    private TranslatorInterface $translator;
 
     /**
      * Constructor.

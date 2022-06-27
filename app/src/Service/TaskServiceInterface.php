@@ -29,7 +29,6 @@ interface TaskServiceInterface
      */
     public function save(Task $task): void;
 
-
     /**
      * Delete entity.
      *

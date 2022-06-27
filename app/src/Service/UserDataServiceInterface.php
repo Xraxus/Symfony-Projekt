@@ -13,7 +13,6 @@ use App\Entity\User;
  */
 interface UserDataServiceInterface
 {
-
     /**
      * Save user.
      *

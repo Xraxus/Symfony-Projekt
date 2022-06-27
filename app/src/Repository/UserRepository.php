@@ -25,7 +25,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class UserRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
 {
-
     /**
      * Constructor.
      *
@@ -35,7 +34,6 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     {
         parent::__construct($registry, User::class);
     }
-
 
     /**
      * Add user function.
@@ -54,7 +52,6 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         }
     }
 
-
     /**
      * Remove user function.
      *
@@ -72,7 +69,6 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         }
     }
 
-
     /**
      * Save user function.
      *
@@ -85,7 +81,6 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->persist($user);
         $this->_em->flush();
     }
-
 
     /**
      * Used to upgrade (rehash) the user's password automatically over time.

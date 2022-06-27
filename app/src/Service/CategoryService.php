@@ -30,7 +30,6 @@ class CategoryService implements CategoryServiceInterface
      */
     private PaginatorInterface $paginator;
 
-
     /**
      * Constructor.
      *
@@ -44,7 +43,6 @@ class CategoryService implements CategoryServiceInterface
         $this->noteRepository = $noteRepository;
         $this->paginator = $paginator;
     }
-
 
     /**
      * Get paginated list.

@@ -18,7 +18,6 @@ class UserDataService implements UserDataServiceInterface
 
     private UserPasswordHasherInterface $passwordEncoder;
 
-
     /**
      * Constructor.
      *
@@ -30,7 +29,6 @@ class UserDataService implements UserDataServiceInterface
         $this->userRepository = $userRepository;
         $this->passwordEncoder = $passwordEncoder;
     }
-
 
     /**
      * Save user.

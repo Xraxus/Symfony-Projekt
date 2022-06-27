@@ -46,7 +46,6 @@ class NoteRepository extends ServiceEntityRepository
         parent::__construct($registry, Note::class);
     }
 
-
     /**
      * Query all records.
      *

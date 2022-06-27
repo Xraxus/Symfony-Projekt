@@ -89,7 +89,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->email = $email;
     }
 
-
     /**
      * A visual identifier that represents this user.
      *
@@ -101,7 +100,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return (string) $this->email;
     }
-
 
     /**
      * @deprecated since Symfony 5.3, use getUserIdentifier instead
@@ -160,7 +158,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->password = $password;
     }
-
 
     /**
      * Returning a salt is only needed, if you are not using a modern

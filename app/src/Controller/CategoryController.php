@@ -31,7 +31,6 @@ class CategoryController extends AbstractController
      */
     private TranslatorInterface $translator;
 
-
     /**
      * Constructor.
      *

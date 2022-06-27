@@ -21,7 +21,6 @@ class Status
     #[ORM\Column(type: 'string', length: 255)]
     private ?string $statusName;
 
-
     /**
      * Id Getter.
      *
@@ -31,7 +30,6 @@ class Status
     {
         return $this->id;
     }
-
 
     /**
      * Id Setter.
@@ -45,7 +43,6 @@ class Status
         $this->id = $statusId;
     }
 
-
     /**
      * Status name getter.
      *
@@ -55,7 +52,6 @@ class Status
     {
         return $this->statusName;
     }
-
 
     /**
      * Status name setter.

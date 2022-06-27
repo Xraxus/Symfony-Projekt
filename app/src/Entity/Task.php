@@ -78,10 +78,8 @@ class Task
         return $this->taskContent;
     }
 
-
     /**
      * Task Content Setter.
-     *
      *
      * @param string $taskContent
      *
@@ -104,7 +102,6 @@ class Task
         return $this->taskCreateTime;
     }
 
-
     /**
      * Setter for task create time.
      *
@@ -117,7 +114,6 @@ class Task
         $this->taskCreateTime = $taskCreateTime;
     }
 
-
     /**
      * Status getter.
      *
@@ -127,7 +123,6 @@ class Task
     {
         return $this->status;
     }
-
 
     /**
      * Status setter.

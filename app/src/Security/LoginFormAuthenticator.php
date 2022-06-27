@@ -46,7 +46,6 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
      */
     private UrlGeneratorInterface $urlGenerator;
 
-
     /**
      * Constructor.
      *
@@ -56,7 +55,6 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
     {
         $this->urlGenerator = $urlGenerator;
     }
-
 
     /**
      * Does the authenticator support the given Request?
@@ -72,7 +70,6 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
         return 'app_login' === $request->attributes->get('_route')
             && $request->isMethod('POST');
     }
-
 
     /**
      * Create a passport for the current request.

@@ -31,9 +31,7 @@ class TaskController extends AbstractController
      */
     private TranslatorInterface $translator;
 
-
     /**
-     *
      * Constructor.
      *
      * @param TaskServiceInterface $taskService

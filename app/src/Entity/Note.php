@@ -140,7 +140,6 @@ class Note
         return $this->noteCreateTime;
     }
 
-
     /**
      * Setter for note create time.
      *
@@ -153,7 +152,6 @@ class Note
         $this->noteCreateTime = $noteCreateTime;
     }
 
-
     /**
      * Getter for note's category.
      *
@@ -164,10 +162,8 @@ class Note
         return $this->category;
     }
 
-
     /**
      * Setter for note's category.
-     *
      *
      * @param Category|null $category
      *

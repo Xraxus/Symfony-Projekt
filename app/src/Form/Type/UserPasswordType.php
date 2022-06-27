@@ -18,7 +18,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class UserPasswordType extends AbstractType
 {
-
     /**
      * Builds the form.
      *
@@ -55,7 +54,6 @@ class UserPasswordType extends AbstractType
         ;
     }
 
-
     /**
      * Configures the options for this type.
      *
@@ -67,7 +65,6 @@ class UserPasswordType extends AbstractType
     {
         $resolver->setDefaults(['data_class' => User::class]);
     }
-
 
     /**
      * Returns the prefix of the template block name for this type.

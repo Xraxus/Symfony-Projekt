@@ -18,7 +18,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class NoteType extends AbstractType
 {
-
     /**
      * Builds the form.
      *
@@ -65,7 +64,6 @@ class NoteType extends AbstractType
             );
     }
 
-
     /**
      * Configures the options for this type.
      *
@@ -77,7 +75,6 @@ class NoteType extends AbstractType
     {
         $resolver->setDefaults(['data_class' => Note::class]);
     }
-
 
     /**
      * Returns the prefix of the template block name for this type.
