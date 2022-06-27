@@ -70,9 +70,9 @@ class TaskService implements TaskServiceInterface
     /**
      * Delete entity.
      *
-     * @param Task $task
+     * @param Task $task Task
      *
-     * @return void
+     * @return void Void
      */
     public function delete(Task $task): void
     {

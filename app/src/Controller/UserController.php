@@ -26,8 +26,8 @@ class UserController extends AbstractController
     /**
      * Constructor.
      *
-     * @param UserDataServiceInterface $userService
-     * @param TranslatorInterface      $translator
+     * @param UserDataServiceInterface $userService User Service
+     * @param TranslatorInterface      $translator  Translator
      */
     public function __construct(UserDataServiceInterface $userService, TranslatorInterface $translator)
     {
@@ -38,9 +38,9 @@ class UserController extends AbstractController
     /**
      * Edit Function.
      *
-     * @param Request $request
+     * @param Request $request HTTP request
      *
-     * @return Response
+     * @return Response HTTP response
      */
     #[Route(
         '/panel',

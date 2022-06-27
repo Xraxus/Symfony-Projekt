@@ -33,9 +33,9 @@ class CategoryService implements CategoryServiceInterface
     /**
      * Constructor.
      *
-     * @param CategoryRepository $categoryRepository
-     * @param PaginatorInterface $paginator
-     * @param NoteRepository     $noteRepository
+     * @param CategoryRepository $categoryRepository Category Repository
+     * @param PaginatorInterface $paginator          Paginator
+     * @param NoteRepository     $noteRepository     Note Repository
      */
     public function __construct(CategoryRepository $categoryRepository, PaginatorInterface $paginator, NoteRepository $noteRepository)
     {
@@ -47,9 +47,9 @@ class CategoryService implements CategoryServiceInterface
     /**
      * Get paginated list.
      *
-     * @param int $page
+     * @param int $page Page
      *
-     * @return PaginationInterface
+     * @return PaginationInterface PaginationInterface
      */
     public function getPaginatedList(int $page): PaginationInterface
     {

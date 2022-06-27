@@ -26,10 +26,10 @@ class TaskType extends AbstractType
      *
      * @see FormTypeExtensionInterface::buildForm()
      *
-     * @param FormBuilderInterface $builder
-     * @param array                $options
+     * @param FormBuilderInterface $builder Form Builder
+     * @param array                $options Form options
      *
-     * @return void
+     * @return void Void
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -59,9 +59,9 @@ class TaskType extends AbstractType
     /**
      * Configures the options for this type.
      *
-     * @param OptionsResolver $resolver
+     * @param OptionsResolver $resolver Options resolver
      *
-     * @return void
+     * @return void Void
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
@@ -74,7 +74,7 @@ class TaskType extends AbstractType
      * The block prefix defaults to the underscored short class name with
      * the "Type" suffix removed (e.g. "UserProfileType" => "user_profile").
      *
-     * @return string
+     * @return string Prefix of template block name
      */
     public function getBlockPrefix(): string
     {

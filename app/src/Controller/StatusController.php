@@ -26,7 +26,7 @@ class StatusController extends AbstractController
     /**
      * Constructor.
      *
-     * @param StatusServiceInterface $statusService
+     * @param StatusServiceInterface $statusService Status Service
      */
     public function __construct(StatusServiceInterface $statusService)
     {

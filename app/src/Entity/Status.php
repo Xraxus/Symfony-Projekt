@@ -24,7 +24,7 @@ class Status
     /**
      * Id Getter.
      *
-     * @return int|null
+     * @return int|null Id
      */
     public function getId(): ?int
     {
@@ -34,9 +34,9 @@ class Status
     /**
      * Id Setter.
      *
-     * @param int $statusId
+     * @param int $statusId Status ID
      *
-     * @return void
+     * @return void Void
      */
     public function setId(int $statusId): void
     {
@@ -46,7 +46,7 @@ class Status
     /**
      * Status name getter.
      *
-     * @return string|null
+     * @return string|null Status name
      */
     public function getStatusName(): ?string
     {
@@ -56,9 +56,9 @@ class Status
     /**
      * Status name setter.
      *
-     * @param string $statusName
+     * @param string $statusName Status name
      *
-     * @return $this
+     * @return $this Status
      */
     public function setStatusName(string $statusName): self
     {

@@ -95,9 +95,9 @@ class Note
     /**
      * Setter for note title.
      *
-     * @param string $noteTitle Note title
+     * @param string $noteTitle Note Title
      *
-     * @return Note
+     * @return $this Note
      */
     public function setNoteTitle(string $noteTitle): self
     {
@@ -121,7 +121,7 @@ class Note
      *
      * @param string $noteContent Note content
      *
-     * @return Note
+     * @return $this Note
      */
     public function setNoteContent(string $noteContent): self
     {
@@ -133,7 +133,7 @@ class Note
     /**
      * Getter for note create time.
      *
-     * @return DateTimeImmutable|null note create time
+     * @return DateTimeImmutable|null Note create time
      */
     public function getCreateTime(): ?DateTimeImmutable
     {
@@ -143,9 +143,9 @@ class Note
     /**
      * Setter for note create time.
      *
-     * @param DateTimeImmutable|null $noteCreateTime
+     * @param DateTimeImmutable|null $noteCreateTime Note create time
      *
-     * @return void
+     * @return void Void
      */
     public function setCreateTime(?DateTimeImmutable $noteCreateTime): void
     {
@@ -155,7 +155,7 @@ class Note
     /**
      * Getter for note's category.
      *
-     * @return Category|null
+     * @return Category|null Category
      */
     public function getCategory(): ?Category
     {
@@ -165,9 +165,9 @@ class Note
     /**
      * Setter for note's category.
      *
-     * @param Category|null $category
+     * @param Category|null $category Category
      *
-     * @return $this
+     * @return $this Note
      */
     public function setCategory(?Category $category): self
     {

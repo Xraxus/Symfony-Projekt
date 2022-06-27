@@ -16,10 +16,10 @@ interface UserDataServiceInterface
     /**
      * Save user.
      *
-     * @param User        $user
-     * @param string|null $newPlainPassword
+     * @param User        $user             User
+     * @param string|null $newPlainPassword New plain password
      *
-     * @return mixed
+     * @return mixed Void
      */
     public function save(User $user, ?string $newPlainPassword = null);
 }

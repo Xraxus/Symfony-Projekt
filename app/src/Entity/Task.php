@@ -81,9 +81,9 @@ class Task
     /**
      * Task Content Setter.
      *
-     * @param string $taskContent
+     * @param string $taskContent Task Content
      *
-     * @return $this
+     * @return $this Task
      */
     public function setTaskContent(string $taskContent): self
     {
@@ -105,9 +105,9 @@ class Task
     /**
      * Setter for task create time.
      *
-     * @param DateTimeImmutable|null $taskCreateTime
+     * @param DateTimeImmutable|null $taskCreateTime Task create time
      *
-     * @return void
+     * @return void Void
      */
     public function setTaskCreateTime(?DateTimeImmutable $taskCreateTime): void
     {
@@ -117,7 +117,7 @@ class Task
     /**
      * Status getter.
      *
-     * @return Status|null
+     * @return Status|null Status
      */
     public function getStatus(): ?Status
     {
@@ -127,9 +127,9 @@ class Task
     /**
      * Status setter.
      *
-     * @param Status|null $status
+     * @param Status|null $status Status
      *
-     * @return $this
+     * @return $this Status
      */
     public function setStatus(?Status $status): self
     {

@@ -33,9 +33,9 @@ class NoteService implements NoteServiceInterface
     /**
      * Constructor.
      *
-     * @param NoteRepository           $noteRepository
-     * @param PaginatorInterface       $paginator
-     * @param CategoryServiceInterface $categoryService
+     * @param NoteRepository           $noteRepository  Note Repository
+     * @param PaginatorInterface       $paginator       Paginator
+     * @param CategoryServiceInterface $categoryService Category Service Interface
      */
     public function __construct(NoteRepository $noteRepository, PaginatorInterface $paginator, CategoryServiceInterface $categoryService)
     {

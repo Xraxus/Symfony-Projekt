@@ -94,7 +94,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      *
      * @see UserInterface
      *
-     * @return string
+     * @return string UserID
      */
     public function getUserIdentifier(): string
     {
@@ -104,7 +104,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @deprecated since Symfony 5.3, use getUserIdentifier instead
      *
-     * @return string
+     * @return string Username
      */
     public function getUsername(): string
     {
@@ -165,7 +165,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      *
      * @see UserInterface
      *
-     * @return string|null
+     * @return string|null Salt
      */
     public function getSalt(): ?string
     {

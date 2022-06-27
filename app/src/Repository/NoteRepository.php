@@ -32,7 +32,7 @@ class NoteRepository extends ServiceEntityRepository
      * of specifying them in configuration files.
      * See https://symfony.com/doc/current/best_practices.html#configuration
      *
-     * @constant int
+     * @constant int Paginator Items
      */
     public const PAGINATOR_ITEMS_PER_PAGE = 10;
 
@@ -49,9 +49,9 @@ class NoteRepository extends ServiceEntityRepository
     /**
      * Query all records.
      *
-     * @param array $filters
+     * @param array $filters Filters
      *
-     * @return QueryBuilder
+     * @return QueryBuilder Query Builder
      */
     public function queryAll(array $filters): QueryBuilder
     {
