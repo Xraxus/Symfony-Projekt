@@ -30,14 +30,14 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
     /**
      * Login route.
      *
-     * @const string
+     * @const string LOGIN_ROUTE
      */
     public const LOGIN_ROUTE = 'app_login';
 
     /**
      * Default route.
      *
-     * @const string
+     * @const string DEFAULT_ROUTE
      */
     public const DEFAULT_ROUTE = 'task_index';
 
@@ -49,7 +49,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
     /**
      * Constructor.
      *
-     * @param UrlGeneratorInterface $urlGenerator
+     * @param UrlGeneratorInterface $urlGenerator URL Generator
      */
     public function __construct(UrlGeneratorInterface $urlGenerator)
     {
@@ -63,7 +63,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
      *
      * @param Request $request HTTP request
      *
-     * @return bool
+     * @return bool Check result
      */
     public function supports(Request $request): bool
     {
@@ -84,9 +84,9 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
      *
      * @throws AuthenticationException
      *
-     * @param Request $request
+     * @param Request $request HTTP Request
      *
-     * @return Passport
+     * @return Passport Passport
      */
     public function authenticate(Request $request): Passport
     {

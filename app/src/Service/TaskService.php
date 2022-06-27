@@ -60,7 +60,7 @@ class TaskService implements TaskServiceInterface
      */
     public function save(Task $task): void
     {
-        if (null == $task->getId()) {
+        if (null === $task->getId()) {
             $task->setTaskCreateTime(new \DateTimeImmutable());
         }
 
